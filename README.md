@@ -26,61 +26,74 @@ Các plugin phễu cũ thời kỳ Minecraft 1.8–1.13 (như `MFHoppers`) hiệ
 
 ## 🎮 II. CƠ CHẾ SỬ DỤNG (HOW TO USE & MECHANICS)
 
-### 1. Nhận và đặt phễu TNHoppers
-1. **Lấy phễu:** Admin sử dụng lệnh `/tnhoppers hopper` (hoặc cấu hình nhận qua Shop/Crates).
-2. **Đặt phễu:** Đặt phễu xuống vị trí mong muốn trên đảo hoặc vùng đất của bạn.
-   - *Lưu ý:* Phễu TNHoppers được đánh dấu bằng thẻ `PersistentDataContainer (PDC)` mang mã nhận diện riêng và lưu quyền sở hữu UUID của người đặt.
-   - Nếu bạn cố tình đặt ở vùng hoang dã (Wilderness) khi server bật giới hạn đảo, phễu sẽ tự động từ chối đặt.
+### 1. Phân loại Phễu & Cách nhận
+Hệ thống cung cấp **2 dòng phễu chuyên biệt** tùy theo nhu cầu:
+- 🔸 **Normal Hopper (Phễu thường):** Hút vật phẩm rơi tự do theo bán kính hình cầu (`RADIUS`). Bán kính mặc định từ 3 blocks và có thể nâng cấp mở rộng lên tới 16 blocks. Thích hợp cho các máy farm tự động nhỏ lẻ, xưởng chế tạo, kho phân loại.
+- 🔹 **Chunk Hopper (Phễu Chunk):** Hút **TOÀN BỘ** vật phẩm rơi tự do trong phạm vi toàn bộ một Chunk (`16x16` từ tầng bedrock đến nóc thế giới). Thích hợp cho các cụm farm quái, farm đá đỏ, máy thu hoạch tự động quy mô siêu lớn.
+
+**Cách nhận và tương tác:**
+- **Lệnh nhận:** Gõ `/tnhoppers get <normal|chunk>` hoặc mở bảng điều khiển `/tnhoppers` để bấm nhận trực tiếp.
+- **Bảo toàn cấp độ & Loại phễu (Level & Type Preservation):** Khi phễu bị đập vỡ bằng cúp (hoặc bị nổ bởi TNT/Creeper), phễu sẽ rơi ra vật phẩm đặc biệt lưu toàn bộ cấp độ nâng cấp và loại phễu (`NORMAL` hoặc `CHUNK`) trong `PersistentDataContainer (PDC)`. Khi đặt lại, phễu sẽ tự động khôi phục nguyên vẹn mọi cấp độ mà không bị mất!
+- **Mở giao diện:** Người chơi có thể **Nhấp chuột phải HOẶC Nhấp chuột trái** vào phễu để mở menu quản lý. (Nếu muốn đập vỡ phễu, người chơi chỉ cần **Sneak (Ngồi xổm) + Chuột trái**).
+
+---
 
 ### 2. Tạo liên kết không dây bằng Link Wand
-1. **Lấy gậy liên kết:** Sử dụng lệnh `/tnhoppers wand` để nhận **Link Wand** (Gậy liên kết).
-2. **Chọn nguồn (Source):** Cầm Link Wand và **Nhấp chuột phải** vào phễu TNHoppers của bạn. Hệ thống sẽ ghi nhận phiên liên kết (hiển thị hiệu ứng hoặc tin nhắn xác nhận).
-3. **Chọn đích (Destination):** Đi tới thùng chứa mong muốn (Rương, Rương bẫy, Thùng gỗ, Hộp Shulker...) và **Nhấp chuột phải** vào đó.
-   - **Tự động chuẩn hóa rương đôi (Double Chest Normalization):** Nếu thùng chứa là rương đôi, plugin sẽ tự động chọn nửa rương chính làm mốc, ngăn chặn triệt để tình trạng liên kết trùng lặp 2 nửa của một rương.
-   - **Giới hạn tự động:** Plugin sẽ kiểm tra khoảng cách và số lượng liên kết cho phép (dựa trên cấp độ nâng cấp hiện tại của phễu).
-4. **Hết hạn an toàn:** Phiên liên kết sẽ tự động hủy sau **60 giây** nếu bạn đổi đồ trên tay hoặc thoát game để tránh ghi đè nhầm lẫn.
+1. **Lấy gậy liên kết:** Sử dụng lệnh `/tnhoppers wand` (hoặc lấy từ menu `/tnhoppers`) để nhận **Link Wand**.
+2. **Chọn nguồn (Source):** Cầm Link Wand và **Nhấp chuột phải** vào phễu TNHoppers của bạn.
+3. **Chọn đích (Destination):** Đi tới thùng chứa mong muốn (Rương, Rương bẫy, Thùng gỗ, Shulker...) và **Nhấp chuột phải** vào đó.
+   - **Tự động chuẩn hóa rương đôi (Double Chest Normalization):** Tự động chọn nửa rương chính làm mốc, ngăn chặn liên kết trùng lặp 2 nửa của một rương.
+   - **Giới hạn tự động:** Kiểm tra khoảng cách và số lượng liên kết cho phép (dựa trên cấp độ nâng cấp của phễu).
+4. **Hết hạn an toàn:** Phiên liên kết tự động hủy sau **60 giây** nếu đổi đồ trên tay hoặc thoát game.
 
-### 3. Hub điều khiển & Giao diện quản lý (GUI Suite)
-Chỉ cần **Nhấp chuột phải** (bằng tay không hoặc vật phẩm thông thường) vào phễu TNHoppers của bạn để mở bảng điều khiển chính:
+---
 
-#### A. Menu Hub Trung Tâm (`§8TNHoppers`)
-- **Quản lý liên kết (Link Manager):** Hiển thị trực quan tất cả các thùng chứa đang được phễu truyền tới. Nhấp vào để gỡ liên kết ngay lập tức (xóa an toàn khỏi SQLite và Cache).
-- **Rương Cho Phép (Whitelist Chest):** Mở giao diện rương 54 ô riêng biệt để bỏ các vật phẩm được phép đi qua.
-- **Rương Chặn (Blacklist Chest):** Mở giao diện rương 54 ô riêng biệt để bỏ các vật phẩm bị chặn lại.
-- **Nâng cấp phễu (Hopper Upgrades):** Mở giao diện mua cấp độ tăng sức mạnh cho phễu.
+### 3. Quản lý Liên Kết & Cấu hình Bộ Lọc Riêng Từng Rương (Per-Link Filtering)
+Trong menu chính của phễu, chọn mục **Quản lý liên kết (Links)**:
+- **Xem danh sách rương đích:** Mỗi ô đại diện cho một rương đích đã kết nối (kèm thông tin thế giới, tọa độ và trạng thái bộ lọc).
+- 🖱️ **Nhấp chuột TRÁI vào rương đích:** Mở giao diện **Cấu hình bộ lọc riêng cho rương đó**:
+  - **Chế độ Whitelist (Danh sách trắng):** Chỉ cho phép các vật phẩm bạn đã đặt mẫu được chuyển vào rương này.
+  - **Chế độ Blacklist (Danh sách đen):** Các vật phẩm trong danh sách sẽ bị chặn lại, không cho vào rương này.
+  - **Lọc nghiêm ngặt (Strict NBT Filtering):** Bật tùy chọn này nếu muốn so khớp chính xác tên tùy biến, mô tả (lore), phù phép (enchantments) hoặc thuộc tính bình thuốc.
+  - 📋 **Sao chép & Dán (Copy/Paste Filter):** Nhấp nút **Sao chép bộ lọc** để lưu cấu hình vào bộ nhớ tạm, sau đó sang rương đích khác bấm **Dán bộ lọc** để áp dụng ngay lập tức!
+- 🖱️ **Nhấp chuột PHẢI vào rương đích:** Gỡ liên kết rương đích an toàn.
+- 🔄 **Chế độ chuyển đồ (Slot 45):** Nhấp để chuyển đổi giữa:
+  - `INSERT_BY_ORDER`: Ưu tiên lấp đầy rương đích theo thứ tự đã định sẵn.
+  - `DISTRIBUTE_EQUALLY`: Chia đều luân phiên giữa các rương nhận.
+- 🗑️ **Tự hủy rác không khớp (Slot 46 - Auto-Void Unmatched):**
+  - **BẬT:** Tự động tiêu hủy các vật phẩm không khớp với bất kỳ bộ lọc rương nào để tránh làm kẹt phễu và sàn farm.
+  - **TẮT:** Giữ lại các vật phẩm chưa phân loại trong 5 ô chứa của phễu.
 
-#### B. Rương Cho Phép & Rương Chặn Riêng Biệt (Chest GUIs)
-Thay vì dùng 1 menu gộp phức tạp, TNHoppers tách biệt thành **2 rương giao diện độc lập**:
-- 🟢 **Rương Cho Phép (`§2Rương Cho Phép (Whitelist)`):**
-  - Bỏ trực tiếp hoặc **Shift-Click** vật phẩm mẫu vào rương (tạo mẫu "bóng ma" *ghost item*, không mất đồ thật).
-  - Nhấp vào ô mẫu để xóa khỏi danh sách.
-  - Nút **Strict NBT Mode:** Tùy chọn so khớp nghiêm ngặt toàn bộ ItemMeta (tên, lore, phù phép, potion, CustomModelData) hoặc chỉ so sánh theo Material.
-  - Nút **Lưu & Kích hoạt Whitelist:** Lưu vào SQLite và kích hoạt ngay lập tức cho phễu.
-- 🔴 **Rương Chặn (`§4Rương Chặn (Blacklist)`):**
-  - Mở giao diện rương để quản lý các vật phẩm cấm đi qua phễu.
-  - Tương tự, hỗ trợ Shift-Click thêm mẫu, xóa mẫu, bật/tắt Strict NBT và nút **Lưu & Kích hoạt Blacklist**.
+---
 
-#### C. Bảng nâng cấp phễu (Interactive Upgrades GUI)
-Người chơi có thể đầu tư tiền tệ Vault hoặc Cấp độ kinh nghiệm (XP Levels) để cường hóa 4 nhánh chỉ số:
-1. ⚡ **Tốc độ (Speed):** Giảm thời gian chờ giữa các lần chuyển đồ (đẩy đồ nhanh hơn gấp nhiều lần).
-2. 📦 **Số lượng (Amount):** Tăng lượng vật phẩm chuyển được trong một chu kỳ (ví dụ từ 1 item lên 4, 8, 16 item/lần).
-3. 🔗 **Số liên kết (Links):** Cho phép phễu kết nối tới nhiều rương đích cùng lúc (1, 2, 4, 8... rương).
-4. 📏 **Khoảng cách (Distance):** Mở rộng tầm với không dây giữa phễu và rương đích (từ 15 blocks lên 30, 50, 100 blocks).
+### 4. Bảng nâng cấp phễu (Interactive Upgrades GUI)
+Người chơi có thể đầu tư tiền tệ Vault hoặc XP Levels để cường hóa 4 nhánh chỉ số:
+1. ⚡ **Tốc độ (Speed):** Giảm thời gian chờ giữa các lần chuyển đồ (từ 20 ticks xuống 15, 10, 5, 2 ticks/lần).
+2. 📦 **Số lượng (Amount):** Tăng lượng vật phẩm chuyển mỗi chu kỳ (từ 1 item lên 4, 16, 32, 64 item/lần).
+3. 🔗 **Số liên kết (Links):** Mở rộng số lượng rương kết nối cùng lúc (từ 1 rương lên 3, 5, 8, 15 rương).
+4. 📏 **Khoảng cách / Bán kính (Distance & Radius):** 
+   - Với **Normal Hopper**: Tăng khoảng cách liên kết rương (lên đến 250 blocks) VÀ mở rộng bán kính hút đồ rơi (lên đến 16 blocks).
+   - Với **Chunk Hopper**: Tăng khoảng cách liên kết rương không dây tối đa.
 
-### 4. Cơ chế hút vật phẩm rơi chuyển thẳng tới rương đích
-Khi tính năng hút đồ được bật trong `config.yml`, phễu TNHoppers sẽ tự động gom các item rơi tự do trong phạm vi (bán kính `RADIUS` hoặc toàn bộ `CHUNK`):
-- **Chuyển thẳng tới rương đích đã liên kết:** Item sau khi hút sẽ được đưa **ngay lập tức vào các rương đích được liên kết** (tuân theo chế độ `INSERT_BY_ORDER` hoặc `DISTRIBUTE_EQUALLY`), không bị nghẽn lại ở 5 ô chứa nhỏ của phễu.
-- **Cơ chế đệm dự phòng (Hopper Fallback Buffer):** Nếu tất cả các rương đích đã đầy hoặc phễu chưa được liên kết với rương nào, vật phẩm hút sẽ được lưu an toàn vào 5 ô chứa của phễu.
-- **Tương thích bộ lọc:** Item rơi chỉ được hút nếu thỏa mãn bộ lọc hiện tại của phễu (Whitelist/Blacklist).
-- **Bảo vệ quyền nhặt:** Tôn trọng người chơi vừa đánh rơi đồ (`pickup-delay` và `respect-item-owner`). Phễu không bao giờ cướp đồ của người chơi khác khi item còn đang khóa nhặt.
+---
 
-### 5. Bảng điều khiển lệnh `/tnhoppers` (Command Control Panel)
+### 5. Cơ chế hút đồ và điều hướng trực tiếp (Smart Direct Routing)
+Khi phễu hút vật phẩm rơi tự do từ sàn farm:
+- **Chuyển thẳng tới rương đích (Direct Routing):** Vật phẩm được chuyển **thẳng đến các rương đích phù hợp với bộ lọc** mà không cần qua bước trung gian ở kho đồ của phễu.
+- **Tự hủy rác (Voiding):** Nếu tính năng `voidUnmatched` được bật, các vật phẩm không có rương nào nhận (ví dụ thịt thối, xương trong farm khoáng sản) sẽ bị xóa bỏ trực tiếp.
+- **Đệm dự phòng:** Nếu không bật xóa rác và tất cả rương đích bị đầy, item sẽ được lưu an toàn vào 5 ô chứa của phễu.
+- **Tôn trọng quyền đảo & quyền nhặt:** Tích hợp kiểm tra quyền SuperiorSkyblock2 và thời gian nhặt của người đánh rơi (`pickup-delay`).
+
+---
+
+### 6. Bảng điều khiển lệnh `/tnhoppers` (Command Menu)
 Gõ lệnh `/tnhoppers` (hoặc `/tnhoppers menu`) để mở ngay bảng điều khiển tổng quan:
-- 🌪️ **Lấy Phễu TNHoppers:** Nhận nhanh phễu không dây (cần quyền `tnhoppers.admin`).
-- 🪄 **Lấy Link Wand:** Nhận nhanh gậy liên kết (cần quyền `tnhoppers.admin`).
-- 📜 **Danh Sách Phễu Đang Nạp:** Xem toàn bộ phễu đang hoạt động trong RAM của máy chủ. Admin có thể **nhấp chuột vào bất kỳ phễu nào để Dịch Chuyển Tức Thời (Teleport)** đến tận nơi kiểm tra thực địa!
-- ℹ️ **Trạng Thái Hệ Thống:** Xem phiên bản, tác giả, trạng thái động cơ chuyển đồ, trạng thái Suction và bảo vệ đảo.
-- 🔄 **Nạp Lại Cấu Hình (Reload):** Tải lại toàn bộ cấu hình `config.yml` ngay từ GUI mà không cần reload server.
+- 🌪️ **Lấy Phễu Thường (Normal Hopper):** Nhận 1 phễu hút theo bán kính.
+- 🌐 **Lấy Phễu Chunk (Chunk Hopper):** Nhận 1 phễu hút toàn chunk 16x16.
+- 🪄 **Lấy Link Wand:** Nhận gậy liên kết.
+- 📜 **Danh Sách Phễu Đang Nạp:** Xem toàn bộ phễu đang hoạt động trong RAM, **nhấp chuột để Dịch Chuyển Tức Thời (Teleport)** đến kiểm tra phễu.
+- ℹ️ **Trạng Thái Hệ Thống:** Xem phiên bản, cơ chế hoạt động, tình trạng module.
+- 🔄 **Nạp Lại Cấu Hình (Reload):** Tải lại toàn bộ cấu hình `config.yml`.
 
 ---
 
