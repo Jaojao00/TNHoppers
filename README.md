@@ -44,18 +44,21 @@ Các plugin phễu cũ thời kỳ Minecraft 1.8–1.13 (như `MFHoppers`) hiệ
 Chỉ cần **Nhấp chuột phải** (bằng tay không hoặc vật phẩm thông thường) vào phễu TNHoppers của bạn để mở bảng điều khiển chính:
 
 #### A. Menu Hub Trung Tâm (`§8TNHoppers`)
-- **Quản lý liên kết (Link Manager):** Hiển thị trực quan tất cả các thùng chứa đang được phễu truyền tới, bao gồm tọa độ, loại thùng chứa và khoảng cách. Nhấp vào để gỡ liên kết ngay lập tức (xóa an toàn khỏi SQLite và Cache).
-- **Bộ lọc vật phẩm (Filter Settings):** Mở giao diện thiết lập quy tắc lọc.
+- **Quản lý liên kết (Link Manager):** Hiển thị trực quan tất cả các thùng chứa đang được phễu truyền tới. Nhấp vào để gỡ liên kết ngay lập tức (xóa an toàn khỏi SQLite và Cache).
+- **Rương Cho Phép (Whitelist Chest):** Mở giao diện rương 54 ô riêng biệt để bỏ các vật phẩm được phép đi qua.
+- **Rương Chặn (Blacklist Chest):** Mở giao diện rương 54 ô riêng biệt để bỏ các vật phẩm bị chặn lại.
 - **Nâng cấp phễu (Hopper Upgrades):** Mở giao diện mua cấp độ tăng sức mạnh cho phễu.
 
-#### B. Trình biên tập bộ lọc (Filter GUI & Ghost Items)
-- **Thêm vật phẩm mẫu:** Đơn giản chỉ cần **Shift-Click** vật phẩm từ túi đồ của bạn vào giao diện bộ lọc. Vật phẩm mẫu sẽ xuất hiện dưới dạng "vật phẩm bóng ma" (ghost item) mà **không làm mất** vật phẩm thật của bạn.
-- **Xóa vật phẩm mẫu:** Click chuột trái vào ô mẫu cần xóa trong GUI.
-- **Chế độ Lọc (Filter Mode):** Nhấp nút chuyển đổi giữa `WHITELIST` (Chỉ cho phép đồ trong danh sách đi qua) và `BLACKLIST` (Chặn tất cả đồ trong danh sách).
-- **Chế độ Nghiêm ngặt (Strict NBT Mode):** 
-  - *Tắt (Non-Strict):* Chỉ so sánh theo loại vật liệu (`Material`), ví dụ: mọi loại kiếm kim cương đều được chấp nhận.
-  - *Bật (Strict):* So sánh chính xác từng chi tiết NBT/ItemMeta (Tên đổi màu, Lore, cấp độ Phù phép, CustomModelData, hiệu ứng Thuốc...).
-- **Lưu cấu hình:** Nhấp nút **Lưu (Save)** để lưu vĩnh viễn vào cơ sở dữ liệu SQLite.
+#### B. Rương Cho Phép & Rương Chặn Riêng Biệt (Chest GUIs)
+Thay vì dùng 1 menu gộp phức tạp, TNHoppers tách biệt thành **2 rương giao diện độc lập**:
+- 🟢 **Rương Cho Phép (`§2Rương Cho Phép (Whitelist)`):**
+  - Bỏ trực tiếp hoặc **Shift-Click** vật phẩm mẫu vào rương (tạo mẫu "bóng ma" *ghost item*, không mất đồ thật).
+  - Nhấp vào ô mẫu để xóa khỏi danh sách.
+  - Nút **Strict NBT Mode:** Tùy chọn so khớp nghiêm ngặt toàn bộ ItemMeta (tên, lore, phù phép, potion, CustomModelData) hoặc chỉ so sánh theo Material.
+  - Nút **Lưu & Kích hoạt Whitelist:** Lưu vào SQLite và kích hoạt ngay lập tức cho phễu.
+- 🔴 **Rương Chặn (`§4Rương Chặn (Blacklist)`):**
+  - Mở giao diện rương để quản lý các vật phẩm cấm đi qua phễu.
+  - Tương tự, hỗ trợ Shift-Click thêm mẫu, xóa mẫu, bật/tắt Strict NBT và nút **Lưu & Kích hoạt Blacklist**.
 
 #### C. Bảng nâng cấp phễu (Interactive Upgrades GUI)
 Người chơi có thể đầu tư tiền tệ Vault hoặc Cấp độ kinh nghiệm (XP Levels) để cường hóa 4 nhánh chỉ số:
@@ -64,10 +67,20 @@ Người chơi có thể đầu tư tiền tệ Vault hoặc Cấp độ kinh ng
 3. 🔗 **Số liên kết (Links):** Cho phép phễu kết nối tới nhiều rương đích cùng lúc (1, 2, 4, 8... rương).
 4. 📏 **Khoảng cách (Distance):** Mở rộng tầm với không dây giữa phễu và rương đích (từ 15 blocks lên 30, 50, 100 blocks).
 
-### 4. Cơ chế hút vật phẩm rơi (Suction Engine)
-Khi tính năng hút đồ được bật trong `config.yml`, phễu TNHoppers sẽ tự động gom các item rơi tự do xung quanh vào kho đồ của phễu:
-- **Tương thích bộ lọc:** Item rơi chỉ được hút nếu thỏa mãn bộ lọc hiện tại của phễu (tránh làm đầy rương bằng rác thải không mong muốn).
+### 4. Cơ chế hút vật phẩm rơi chuyển thẳng tới rương đích
+Khi tính năng hút đồ được bật trong `config.yml`, phễu TNHoppers sẽ tự động gom các item rơi tự do trong phạm vi (bán kính `RADIUS` hoặc toàn bộ `CHUNK`):
+- **Chuyển thẳng tới rương đích đã liên kết:** Item sau khi hút sẽ được đưa **ngay lập tức vào các rương đích được liên kết** (tuân theo chế độ `INSERT_BY_ORDER` hoặc `DISTRIBUTE_EQUALLY`), không bị nghẽn lại ở 5 ô chứa nhỏ của phễu.
+- **Cơ chế đệm dự phòng (Hopper Fallback Buffer):** Nếu tất cả các rương đích đã đầy hoặc phễu chưa được liên kết với rương nào, vật phẩm hút sẽ được lưu an toàn vào 5 ô chứa của phễu.
+- **Tương thích bộ lọc:** Item rơi chỉ được hút nếu thỏa mãn bộ lọc hiện tại của phễu (Whitelist/Blacklist).
 - **Bảo vệ quyền nhặt:** Tôn trọng người chơi vừa đánh rơi đồ (`pickup-delay` và `respect-item-owner`). Phễu không bao giờ cướp đồ của người chơi khác khi item còn đang khóa nhặt.
+
+### 5. Bảng điều khiển lệnh `/tnhoppers` (Command Control Panel)
+Gõ lệnh `/tnhoppers` (hoặc `/tnhoppers menu`) để mở ngay bảng điều khiển tổng quan:
+- 🌪️ **Lấy Phễu TNHoppers:** Nhận nhanh phễu không dây (cần quyền `tnhoppers.admin`).
+- 🪄 **Lấy Link Wand:** Nhận nhanh gậy liên kết (cần quyền `tnhoppers.admin`).
+- 📜 **Danh Sách Phễu Đang Nạp:** Xem toàn bộ phễu đang hoạt động trong RAM của máy chủ. Admin có thể **nhấp chuột vào bất kỳ phễu nào để Dịch Chuyển Tức Thời (Teleport)** đến tận nơi kiểm tra thực địa!
+- ℹ️ **Trạng Thái Hệ Thống:** Xem phiên bản, tác giả, trạng thái động cơ chuyển đồ, trạng thái Suction và bảo vệ đảo.
+- 🔄 **Nạp Lại Cấu Hình (Reload):** Tải lại toàn bộ cấu hình `config.yml` ngay từ GUI mà không cần reload server.
 
 ---
 
@@ -125,10 +138,12 @@ Plugin sử dụng mô hình Adapter độc lập (`ProtectionAdapter`):
 
 ## 💻 IV. LỆNH & QUYỀN HẠN (COMMANDS & PERMISSIONS)
 
-| Lệnh | Mô tả | Quyền hạn yêu cầu | Mặc định |
-| :--- | :--- | :--- | :--- |
-| `/tnhoppers hopper` | Nhận 1 phễu không dây TNHoppers | `tnhoppers.admin` | OP |
-| `/tnhoppers wand` | Nhận 1 gậy liên kết Link Wand | `tnhoppers.admin` | OP |
+| Lệnh | Cú pháp | Mô tả chi tiết | Quyền hạn yêu cầu | Mặc định |
+| :--- | :--- | :--- | :---: | :---: |
+| `/tnhoppers` | `/tnhoppers [menu]` | Mở Bảng Điều Khiển Tổng Quan (Control Panel) dạng GUI | Không yêu cầu | Mọi người |
+| `/tnhoppers hopper` | `/tnhoppers hopper` | Nhận 1 phễu không dây TNHoppers (gắn PDC) | `tnhoppers.admin` | OP |
+| `/tnhoppers wand` | `/tnhoppers wand` | Nhận 1 gậy liên kết Link Wand (hạn 60s) | `tnhoppers.admin` | OP |
+| `/tnhoppers reload` | `/tnhoppers reload` | Nạp lại toàn bộ tệp cấu hình `config.yml` | `tnhoppers.admin` | OP |
 
 ---
 
