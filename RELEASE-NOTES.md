@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
+</p>
+
 # 🚀 Bản Phát Hành TNHoppers v0.6.0 (Release Notes)
 
 **Phiên bản:** `v0.6.0`  

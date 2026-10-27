@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="tnhoperlogo.jpg" alt="TNHoppers Logo" width="220" />
+</p>
+
 # 🌪️ TNHoppers — Hệ Thống Phễu Không Dây & Hút Đồ Tối Tân
 
 > **Tác giả & Bản quyền:** © 2026 **Tài Nguyễn (TN)**  
