@@ -2,9 +2,10 @@
 
 > **Tác giả & Bản quyền:** © 2026 **Tài Nguyễn (TN)**  
 > **Nền tảng hỗ trợ:** Paper / Purpur / Folia 1.20+ / 1.21.x  
-> **Ngôn ngữ & Môi trường:** Java 21 / Maven 3.9+  
-> **Giấy phép (License):** [MIT License](LICENSE) — Cam kết 100% mã nguồn mở, không làm rối / không obfuscate.
->**Link discord**: https://discord.gg/kwqU3N4nkH
+> **Môi trường vận hành:** Java 21+  
+> **Kênh hỗ trợ Discord:** [Tham gia Discord Server](https://discord.gg/kwqU3N4nkH)  
+> **Email liên hệ:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)  
+> **Bản quyền sở hữu:** Thuộc quyền tác giả độc quyền của **Tài Nguyễn (TN)**
 
 ---
 
@@ -221,30 +222,21 @@ logging:
 
 ---
 
-## 🔨 VI. HƯỚNG DẪN CÀI ĐẶT & BIÊN DỊCH (BUILD GUIDE)
+## 🔨 VI. HƯỚNG DẪN CÀI ĐẶT (INSTALLATION GUIDE)
 
-### 1. Cài đặt trên máy chủ
-1. Tải file `TNHoppers-0.6.0-SNAPSHOT.jar` từ thư mục `target/`.
-2. Thả file vào thư mục `plugins/` của máy chủ Paper (1.20 trở lên).
-3. (Tùy chọn) Cài đặt **Vault** (cùng plugin kinh tế như EssentialsX) và **SuperiorSkyblock2** nếu máy chủ là Skyblock.
-4. Khởi động lại server để plugin tự tạo cơ sở dữ liệu và cấu hình mặc định.
-
-### 2. Biên dịch từ mã nguồn (Compile with Maven)
-Yêu cầu máy tính có cài đặt **JDK 21** trở lên và **Apache Maven**:
-
-```bash
-# Di chuyển vào thư mục dự án TNHoppers
-cd TNHoppers
-
-# Thực hiện dọn dẹp, chạy unit tests và đóng gói
-mvn clean test package
-```
-Sau khi build hoàn tất (`BUILD SUCCESS`), file JAR thành phẩm dạng shaded sẽ nằm tại:
-`target/TNHoppers-0.6.0-SNAPSHOT.jar`.
+### Cài đặt trên máy chủ Paper / Purpur
+1. Tải bản phát hành `TNHoppers-0.6.0.jar` chính thức từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.
+2. Thả file `.jar` vào thư mục `plugins/` của máy chủ Paper (hỗ trợ 1.20 trở lên).
+3. (Khuyến nghị) Cài đặt **Vault** (cùng plugin kinh tế như EssentialsX) để sử dụng hệ thống nâng cấp bằng tiền ingame, và **SuperiorSkyblock2** nếu là máy chủ Skyblock.
+4. Khởi động lại máy chủ hoặc gõ `/tnhoppers reload` để plugin khởi tạo cơ sở dữ liệu SQLite và cấu hình `config.yml`.
 
 ---
 
-## 📜 VII. BẢN QUYỀN & TÁC QUYỀN (LICENSE & CREDITS)
+## 📜 VII. BẢN QUYỀN & LIÊN HỆ HỖ TRỢ (COPYRIGHT & SUPPORT)
 
-- Dự án thuộc bản quyền chính thức của **Tài Nguyễn (TN)**.
-- Được cấp phép dưới [Giấy phép MIT](LICENSE): Bạn có toàn quyền sử dụng, sửa đổi, tích hợp vào hệ thống máy chủ thương mại hoặc phi thương mại, với điều kiện giữ nguyên thông báo bản quyền gốc của tác giả.
+- **Bản quyền tác phẩm:** Toàn bộ sản phẩm và thương hiệu **TNHoppers** thuộc quyền sở hữu của **Tài Nguyễn (TN)**.
+- **Phân phối:** Plugin được phát hành dưới dạng tệp binary đóng gói (`.jar`) tối ưu, không công khai mã nguồn gốc để bảo vệ bản quyền và tính an toàn của dự án.
+- **Kênh hỗ trợ chính thức:**
+  - 💬 **Discord:** [https://discord.gg/kwqU3N4nkH](https://discord.gg/kwqU3N4nkH)
+  - 📧 **Gmail:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)
+  - 🌐 **Trang tải Release:** [https://github.com/Jaojao00/TNHoppers/releases](https://github.com/Jaojao00/TNHoppers/releases)

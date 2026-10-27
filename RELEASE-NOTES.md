@@ -47,3 +47,9 @@
 ### 📦 Tệp phân phối:
 - `TNHoppers-0.6.0.jar`: File plugin shaded hoàn chỉnh (đã tích hợp SQLite JDBC và các thư viện cần thiết).
 - `config.yml`: File cấu hình mẫu mặc định.
+
+---
+
+### 💬 Hỗ Trợ & Liên Hệ:
+- **Discord:** [https://discord.gg/kwqU3N4nkH](https://discord.gg/kwqU3N4nkH)
+- **Gmail:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)
