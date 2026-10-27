@@ -1,10 +1,14 @@
 # TNHoppers - Tài Nguyễn
-# Core defaults. GUI/filter persistence is available; paid upgrades and entity suction remain disabled.
+# Core defaults. GUI/filter persistence is available; paid upgrades and entity suction are active.
 storage:
   sqlite-file: "tnhoppers.db"
   busy-timeout-ms: 5000
   journal-mode: "WAL"
   synchronous: "NORMAL"
+
+hoppers:
+  # Khi người chơi đặt phễu vanilla, tự động kích hoạt thành TNHopper
+  auto-convert-placed-hoppers: true
 
 wireless:
   enabled: true
@@ -22,19 +26,22 @@ transfer:
   max-items-per-cycle: 1
 
 suction:
-  # Keep disabled until tested with your protection/economy setup.
-  enabled: false
-  # RADIUS: items close to the hopper; CHUNK: items anywhere in the source chunk.
+  # Bật tính năng hút vật phẩm rơi tự do (Suction Engine)
+  enabled: true
+  # RADIUS: hút theo bán kính quanh phễu; CHUNK: hút toàn bộ chunk 16x16
   mode: "RADIUS"
   radius: 3.0
-  interval-ticks: 10
-  # Shared per scheduler cycle, across the round-robin hopper queue.
-  max-hoppers-per-cycle: 128
-  max-entities-per-cycle: 128
-  max-entities-per-hopper-per-cycle: 16
-  max-items-per-cycle: 64
-  # Do not suction an item entity reserved for a different player.
-  respect-item-owner: true
+  # Quét trực tiếp liên tục (Live Scans: 2 ticks = 0.1s)
+  interval-ticks: 2
+  # Ngân sách xử lý tối đa mỗi chu kỳ
+  max-hoppers-per-cycle: 256
+  max-entities-per-cycle: 256
+  max-entities-per-hopper-per-cycle: 64
+  max-items-per-cycle: 256
+  # Bỏ qua item dành riêng cho người khác (đặt false để gom tất cả đồ farm/rơi tự do)
+  respect-item-owner: false
+  # Phát sự kiện InventoryPickupItemEvent (false để tránh bị plugin khác chặn nhầm khi hút xa)
+  call-pickup-event: false
 
 upgrades:
   # Enable paid upgrades via Vault economy (falls back to XP levels if Vault is absent)
