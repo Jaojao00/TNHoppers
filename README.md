@@ -4,6 +4,7 @@
 > **Nền tảng hỗ trợ:** Paper / Purpur / Folia 1.20+ / 1.21.x  
 > **Ngôn ngữ & Môi trường:** Java 21 / Maven 3.9+  
 > **Giấy phép (License):** [MIT License](LICENSE) — Cam kết 100% mã nguồn mở, không làm rối / không obfuscate.
+>**Link discord**: https://discord.gg/kwqU3N4nkH
 
 ---
 
