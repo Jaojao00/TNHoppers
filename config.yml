@@ -1,0 +1,61 @@
+# TNHoppers - Tài Nguyễn
+# Core defaults. GUI/filter persistence is available; paid upgrades and entity suction remain disabled.
+storage:
+  sqlite-file: "tnhoppers.db"
+  busy-timeout-ms: 5000
+  journal-mode: "WAL"
+  synchronous: "NORMAL"
+
+wireless:
+  enabled: true
+  default-max-links: 1
+  default-max-distance: 15
+  # Session Link Wand tự hết hạn sau 60 giây; max-links/distance áp dụng ở Link Wand.
+  # Allowed modes: INSERT_BY_ORDER, DISTRIBUTE_EQUALLY
+  default-mode: "INSERT_BY_ORDER"
+
+transfer:
+  # Base transfer tick loop check interval
+  check-interval-ticks: 2
+  # Default intervals and amounts (can be boosted by upgrades)
+  interval-ticks: 20
+  max-items-per-cycle: 1
+
+suction:
+  # Keep disabled until tested with your protection/economy setup.
+  enabled: false
+  # RADIUS: items close to the hopper; CHUNK: items anywhere in the source chunk.
+  mode: "RADIUS"
+  radius: 3.0
+  interval-ticks: 10
+  # Shared per scheduler cycle, across the round-robin hopper queue.
+  max-hoppers-per-cycle: 128
+  max-entities-per-cycle: 128
+  max-entities-per-hopper-per-cycle: 16
+  max-items-per-cycle: 64
+  # Do not suction an item entity reserved for a different player.
+  respect-item-owner: true
+
+upgrades:
+  # Enable paid upgrades via Vault economy (falls back to XP levels if Vault is absent)
+  purchases-enabled: true
+  costs:
+    speed-base: 1000.0
+    amount-base: 2500.0
+    links-base: 1500.0
+    distance-base: 2000.0
+
+integrations:
+  superior-skyblock2:
+    enabled: true
+    # Yêu cầu phễu phải được đặt bên trong đảo (không cho đặt vùng hoang dã)
+    require-island-to-place: true
+    # Ngăn chặn liên kết rương xuyên qua đảo của người chơi khác
+    allow-cross-island-linking: false
+    # Định kỳ xác minh chủ phễu còn quyền trên đảo đích trong lúc chuyển đồ
+    validate-island-membership-on-transfer: true
+  vault:
+    enabled: true
+
+logging:
+  debug: false
