@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Tài Nguyễn (TN)
+Copyright (c) 2026 Tài Nguyễn (TN) <tainguyenhr.dev@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,29 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+### TÓM TẮT QUYỀN HẠN & PHẠM VI ÁP DỤNG (LICENSE SUMMARY)
+
+Giấy phép MIT là tiêu chuẩn bản quyền quốc tế uy tín, cân bằng giữa quyền tự do sử dụng tối đa của người dùng và sự bảo vệ quyền tác giả của nhà phát triển:
+
+#### 1. Quyền được phép (Permissions):
+* ✅ **Sử dụng thương mại (Commercial Use):** Được phép sử dụng plugin trên các máy chủ Minecraft có hoạt động thương mại, nạp thẻ, bán rank VIP hoặc kinh doanh dịch vụ game.
+* ✅ **Tùy biến cấu hình (Modification):** Được tự do tùy biến cấu hình `config.yml`, thông số nâng cấp và kết nối vào các hệ thống máy chủ.
+* ✅ **Phân phối (Distribution):** Được phép chia sẻ bản phát hành chính thức hoặc tích hợp vào các gói tài nguyên, server pack.
+* ✅ **Sử dụng riêng tư (Private Use):** Được phép triển khai thử nghiệm hoặc vận hành nội bộ không giới hạn.
+
+#### 2. Điều kiện bắt buộc (Conditions):
+* 📋 **Bảo lưu thông tin tác quyền (Attribution):** Mọi bản sao, tài liệu hướng dẫn hoặc thành phần đi kèm bắt buộc phải giữ nguyên dòng bản quyền gốc của tác giả **Tài Nguyễn (TN)** và toàn văn giấy phép này.
+
+#### 3. Miễn trừ trách nhiệm (Limitations):
+* 🛡️ **Không bảo hành (No Warranty):** Phần mềm được cung cấp theo nguyên tắc "nguyên trạng" (AS-IS). Tác giả không chịu trách nhiệm pháp lý đối với bất kỳ sự cố, mất mát dữ liệu hoặc thiệt hại gián tiếp nào phát sinh trong quá trình vận hành của máy chủ bên thứ ba.
+
+---
+
+### THÔNG TIN TÁC GIẢ & HỖ TRỢ CHÍNH THỨC
+* **Tác giả & Chủ sở hữu:** Tài Nguyễn (TN)
+* **Email liên hệ:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)
+* **Cộng đồng Discord:** [https://discord.gg/kwqU3N4nkH](https://discord.gg/kwqU3N4nkH)
+* **Kho lưu trữ chính thức:** [https://github.com/Jaojao00/TNHoppers](https://github.com/Jaojao00/TNHoppers)
