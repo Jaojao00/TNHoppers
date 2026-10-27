@@ -59,7 +59,7 @@ Trước khi đưa file `.jar` vào thư mục `plugins/` của máy chủ, bạ
 
 | Tệp Tin | Phiên Bản | Mã Băm SHA-256 |
 | :--- | :--- | :--- |
-| `TNHoppers-0.6.0.jar` | **v0.6.0** | `dd6dead97322e802cd11c993dbf41adb67e13cd70919c09676e3cffec0a0cf16` |
+| `TNHoppers-0.6.0.jar` | **v0.6.0 (Protected Build)** | `35d1143fd49d82f0b7fef94a57992424cd5a1a0d02c386889d1208cdbf740d7b` |
 
 *Lệnh kiểm tra mã băm trên máy chủ của bạn:*
 ```powershell
