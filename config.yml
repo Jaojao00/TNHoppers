@@ -8,7 +8,9 @@ storage:
 
 hoppers:
   # Khi người chơi đặt phễu vanilla, tự động kích hoạt thành TNHopper
-  auto-convert-placed-hoppers: true
+  # Đặt false (khuyến nghị) để phễu vanilla hoạt động hoàn toàn bình thường 100%, không bị can thiệp.
+  # Chỉ những phễu TNHopper được cấp từ lệnh (/tnhoppers get) hoặc chế tạo/mua mới có tính năng nâng cao.
+  auto-convert-placed-hoppers: false
 
 wireless:
   enabled: true
