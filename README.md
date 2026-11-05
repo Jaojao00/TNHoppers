@@ -5,7 +5,7 @@
 # 🌪️ TNHoppers — Hệ Thống Phễu Không Dây & Hút Đồ Tối Tân
 
 > **Tác giả & Bản quyền:** © 2026 **Tài Nguyễn (TN)**  
-> **Nền tảng hỗ trợ:** Paper / Purpur / Folia 1.20+ / 1.21.x  
+> **Nền tảng hỗ trợ:** Paper / Purpur 1.20 - 1.21.x (Hỗ trợ đa luồng Folia dự kiến tại v0.7.0)  
 > **Môi trường vận hành:** Java 21+  
 > **Kênh hỗ trợ Discord:** [Tham gia Discord Server](https://discord.gg/kwqU3N4nkH)  
 > **Email liên hệ:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)  

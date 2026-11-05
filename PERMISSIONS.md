@@ -19,7 +19,8 @@
 
 | Node Quyền Hạn (Permission) | Mặc định | Mục đích sử dụng |
 | :--- | :---: | :--- |
-| `tnhoppers.admin` | `op` | Quyền Quản Trị Viên: Cho phép nhận phễu, nhận Link Wand, và mở/quản lý bất kỳ phễu nào trên server mà không bị giới hạn quyền đảo. |
+| `tnhoppers.use` | `true` (Mọi người) | Cho phép người chơi gõ `/tnhoppers` hoặc `/tnhoppers menu` để mở bảng điều khiển cá nhân. |
+| `tnhoppers.admin` | `op` | Quyền Quản Trị Viên: Cho phép nhận phễu (`get`), nhận Link Wand (`wand`), nạp lại cấu hình (`reload`), dịch chuyển tới phễu, và quản lý bất kỳ phễu nào trên server. |
 
 ---
 

@@ -2,6 +2,43 @@
   <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
 </p>
 
+# 🚀 Bản Phát Hành TNHoppers v0.6.1 (Gia Cố & Nâng Cấp Độ Bền Vững)
+
+**Phiên bản:** `v0.6.1`  
+**Ngày phát hành:** 06/11/2026  
+**Tác giả:** Tài Nguyễn (TN)  
+**Tương thích:** Paper / Purpur 1.20 - 1.21.x (Java 21+)  
+
+---
+
+### 🛡️ Các cải tiến & gia cố quan trọng trong v0.6.1:
+1. **[P0] Chấm dứt ghi đè cấu hình Suction**:
+   - Gỡ bỏ hoàn toàn việc ép buộc ghi đè giá trị `suction.enabled`, `interval-ticks`, `respect-item-owner` và `call-pickup-event` khi khởi động.
+   - Tôn trọng 100% mọi cấu hình do quản trị viên thiết lập; chỉ bổ sung các tùy chọn còn thiếu.
+
+2. **[P0] Gia cố giao dịch hút item chống Duplicate & Desync**:
+   - Cơ chế khấu trừ tức thời (Instant Deduct): Số lượng item trên thế giới được trừ ngay khi mỗi phần đồ được nhận thành công vào rương/phễu.
+   - Bắt trọn vẹn ngoại lệ, loại bỏ hoàn toàn khả năng nhân bản vật phẩm khi rương đầy, ngắt quãng hoặc lỗi kết nối.
+   - Hỗ trợ kiểm tra quyền sở hữu đồ rơi (`respect-item-owner` kiểm tra cả owner và thrower).
+
+3. **[P1] Tối ưu hóa hiệu năng quét phễu (Performance Cursor)**:
+   - Thay thế việc duyệt toàn bộ chunk của mọi thế giới bằng con trỏ ngân sách (Round-Robin Budget Cursor) qua `plugin.cache().snapshotAll()`.
+   - Bổ sung cấu hình `transfer.max-hoppers-per-cycle: 512` giúp server hàng nghìn chunk luôn giữ vững 20.0 TPS.
+
+4. **[P1] Khắc phục race-condition khi tải nâng cấp bất đồng bộ**:
+   - Đồng bộ hóa việc nạp hồ sơ nâng cấp (`loadUpgradeProfile`) lên luồng chính.
+   - Áp dụng `setUpgradesIfAbsent` ngăn việc kết quả nạp database đến muộn ghi đè cấp độ người chơi vừa mua.
+
+5. **[P1] Phân quyền lệnh chuẩn hóa (`tnhoppers.use` & `tnhoppers.admin`)**:
+   - Cho phép toàn bộ người chơi thường mở bảng điều khiển `/tnhoppers` hoặc `/tnhoppers menu`.
+   - Phân định rõ ràng quyền quản trị `tnhoppers.admin` cho các lệnh lấy đồ, nạp cấu hình và dịch chuyển.
+
+6. **[P1] An toàn dữ liệu SQLite khi Shutdown**:
+   - Tăng thời gian chờ đợi ghi cơ sở dữ liệu khi tắt server lên 15 giây.
+   - Tự động thực thi `PRAGMA wal_checkpoint(PASSIVE)` đồng bộ sạch nhật ký WAL trước khi ngắt kết nối.
+
+---
+
 # 🚀 Bản Phát Hành TNHoppers v0.6.0 (Release Notes)
 
 **Phiên bản:** `v0.6.0`  

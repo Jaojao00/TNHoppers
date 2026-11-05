@@ -23,6 +23,8 @@ wireless:
 transfer:
   # Base transfer tick loop check interval
   check-interval-ticks: 2
+  # Ngân sách số phễu tối đa quét chuyển đồ mỗi chu kỳ tick (chống drop TPS trên server đông phễu)
+  max-hoppers-per-cycle: 512
   # Default intervals and amounts (can be boosted by upgrades)
   interval-ticks: 20
   max-items-per-cycle: 1
@@ -61,6 +63,8 @@ integrations:
     require-island-to-place: true
     # Ngăn chặn liên kết rương xuyên qua đảo của người chơi khác
     allow-cross-island-linking: false
+    # Cho phép chuyển đồ tại thế giới không có đảo (ví dụ: world thường, spawn)
+    allow-non-island-transfer: true
     # Định kỳ xác minh chủ phễu còn quyền trên đảo đích trong lúc chuyển đồ
     validate-island-membership-on-transfer: true
   vault:
