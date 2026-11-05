@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
 </p>
 
-# 🚀 Bản Phát Hành TNHoppers v0.6.2 (Zero-Copy Cache & Transactional Rollback)
+# 🚀 Bản Phát Hành TNHoppers v0.6.2 (Live View Cache, Symmetrical Rollback & Hardened Auto-Sorter)
 
 **Phiên bản:** `v0.6.2`  
 **Ngày phát hành:** 06/11/2026  
@@ -13,24 +13,32 @@
 
 ### 🛡️ Các cải tiến cốt lõi trong v0.6.2:
 
-1. **[P1] Bộ Đăng Ký Phễu Hoạt Động Không Cấp Phát (Zero-Copy Active Hopper Registry)**:
-   - Triệt tiêu hoàn toàn chi phí tạo `ArrayList` và `List.copyOf` định kỳ trong `ChunkHopperCache.java`.
-   - Duy trì song song chỉ mục phẳng `ConcurrentHashMap<BlockPosition, HopperData> activeHoppers` được cập nhật tức thời theo vòng đời chunk (load/unload) và thêm/xóa phễu.
-   - `snapshotAll()` trả về view bất biến `Collections.unmodifiableCollection(activeHoppers.values())`, 0 cấp phát rác (zero-allocation), giúp CPU nhàn rỗi ngay cả khi vận hành hàng chục ngàn phễu.
+1. **[P1] Live View Phễu Hoạt Động (`activeHoppersView()`)**:
+   - Tách biệt rõ ràng khái niệm giữa immutable snapshot và live view: đổi tên phương thức chính thức thành `activeHoppersView()`.
+   - Phương thức trả về view không thể sửa đổi (`Collections.unmodifiableCollection`) từ `ConcurrentHashMap.values()`.
+   - Lấy phần tử kế tiếp qua iterator có chi phí khấu hao trung bình $O(1)$; quét toàn bộ $N$ phễu hoạt động có độ phức tạp thời gian $O(N)$.
+   - Iterator nhất quán yếu (weakly consistent), cho phép thêm/xóa phễu và dỡ nạp chunk đồng thời mà không ném ngoại lệ `ConcurrentModificationException` (được kiểm chứng bằng unit test).
 
-2. **[P1] Giao Dịch Chuyển Item Hoàn Lại Nguyên Tử (Transactional Rollback & Simulation)**:
+2. **[P0] Giao Dịch Chuyển Đồ Đối Xứng & Bảo Toàn Khối Lượng (Symmetrical Rollback)**:
    - Trong `InventoryTransferTransaction.java`, bổ sung `simulateInsert` tính toán sức chứa trước khi thực hiện.
-   - Triển khai `insertWithRollback`: chụp ảnh nhanh mảng `ItemStack[]` của inventory đích trước khi ghi. Nếu tác vụ xác nhận (`onCommit`) trừ entity item thế giới gặp lỗi, giao dịch lập tức rollback toàn bộ slot rương về trạng thái nguyên bản.
-   - Bảo đảm 100% tính nguyên tử: không thể xảy ra hiện tượng nhân bản vật phẩm hoặc lệch số lượng dù server gặp lag hay ngoại lệ bất ngờ.
+   - Triển khai `insertWithRollback`: Chụp ảnh nhanh mảng `ItemStack[]` của inventory đích trước khi ghi, đồng thời giữ trạng thái gốc của thực thể item ngoài thế giới (`entityInitialStack`).
+   - Nếu tác vụ `onCommit` hoặc trừ thực thể item gặp ngoại lệ, cả kho lưu trữ lẫn thực thể item đều được hoàn trả nguyên vẹn về trạng thái ban đầu.
+   - Đảm bảo an toàn tuyệt đối trước các lỗi runtime, plugin can thiệp hoặc rương đầy trong quá trình chuyển đồng bộ. Định luật bảo toàn khối lượng được kiểm thử với 6 test cases trong `TransferResultTest`.
 
-3. **[P1] Giám Sát SQLite Checkpoint Chặt Chẽ & An Toàn Tắt Server**:
-   - Nâng cấp checkpoint khi tắt máy chủ lên `PRAGMA wal_checkpoint(TRUNCATE)` thu gọn file WAL về 0 byte.
-   - Kiểm tra và ghi log chi tiết giá trị 3 cột trả về từ SQLite (`busy`, `log`, `checkpointed`) để quản trị viên nắm rõ tình trạng database.
-   - Cảnh báo rõ ràng nếu hàng đợi ghi không xả hết trong 15 giây. Tuyệt đối không xóa file `-wal` / `-shm` thủ công.
+3. **[P1] SQLite WAL Checkpoint Chẩn Đoán & Khả Năng Phục Hồi**:
+   - Thực thi `PRAGMA wal_checkpoint(TRUNCATE)` khi đóng server và đọc chi tiết 3 cột trạng thái (`busy`, `log`, `checkpointed`).
+   - Ghi nhận cảnh báo rõ ràng nếu checkpoint bị hoãn lại do luồng đọc đang giải phóng khóa (`busy = 1`), khẳng định các frame WAL còn lại sẽ được SQLite tự động phục hồi an toàn khi khởi động lại.
+   - Bắt buộc kiểm tra timeout xả hàng đợi ghi 15 giây; tuyệt đối không can thiệp xóa file `-wal` thủ công.
 
-4. **14/14 Báo Cáo Kiểm Thử Tự Động (Surefire Reports)**:
-   - Bổ sung bộ kiểm thử `ChunkHopperCacheTest` kiểm chứng tính đúng đắn của registry phễu.
-   - Gói phân phối ZIP tích hợp sẵn thư mục `target/surefire-reports` (10 tệp XML & TXT) minh chứng độc lập toàn bộ 14 bài kiểm thử đều thành công.
+4. **🧙‍♂️ Gia Cố Tính Năng Tự Động Phân Loại Đồ (Auto-Sorter Wizard)**:
+   - **Chống ghi đè vô ý:** Nếu các rương đích đã cài đặt bộ lọc hoặc tên tùy chỉnh từ trước, hệ thống yêu cầu người chơi nhấp lại lần thứ hai trong vòng 10 giây để xác nhận ghi đè.
+   - **Lấy mẫu vật phẩm bất biến (Read-Only Sampling):** Chỉ đọc và clone mẫu đồ với số lượng 1, tuyệt đối không làm thay đổi hay tiêu hao đồ trong túi người chơi.
+   - **Phân biệt ItemMeta đa chiều:** Tách biệt chính xác các vật phẩm cùng `Material` nhưng khác `ItemMeta` (Tên tùy chỉnh, Phù phép, Thuốc Potion, CustomModelData, Sách phù phép). Tự động kích hoạt cờ `strict = true` khi đồ mẫu có metadata đặc biệt.
+   - **Hoàn tác cấu hình khi lỗi database:** Giám sát toàn bộ batch ghi qua `CompletableFuture.allOf`. Nếu việc lưu vào SQLite gặp sự cố, cache trong RAM lập tức rollback về trạng thái ban đầu và báo lỗi cho người chơi.
+
+5. **🧪 19/19 Báo Cáo Kiểm Thử Tự Động Surefire (XML & TXT)**:
+   - Toàn bộ **19 bài kiểm thử độc lập** (`ChunkHopperCacheTest`: 4, `TransferResultTest`: 6, `LinkDestinationTest`: 4, `HopperUpgradesTest`: 3, `BlockPositionTest`: 2) đều vượt qua thành công (**0 failures, 0 errors**).
+   - Thư mục `target/surefire-reports` được đóng gói nguyên vẹn trong tệp `TNHoppers-v0.6.2-FullProject.zip` để bất kỳ ai cũng có thể giải nén và kiểm chứng độc lập.
 
 ---
 
