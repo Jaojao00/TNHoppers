@@ -2,6 +2,38 @@
   <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
 </p>
 
+# 🚀 Bản Phát Hành TNHoppers v0.6.2 (Zero-Copy Cache & Transactional Rollback)
+
+**Phiên bản:** `v0.6.2`  
+**Ngày phát hành:** 06/11/2026  
+**Tác giả:** Tài Nguyễn (TN)  
+**Tương thích:** Paper / Purpur 1.20 - 1.21.x (Java 21+)  
+
+---
+
+### 🛡️ Các cải tiến cốt lõi trong v0.6.2:
+
+1. **[P1] Bộ Đăng Ký Phễu Hoạt Động Không Cấp Phát (Zero-Copy Active Hopper Registry)**:
+   - Triệt tiêu hoàn toàn chi phí tạo `ArrayList` và `List.copyOf` định kỳ trong `ChunkHopperCache.java`.
+   - Duy trì song song chỉ mục phẳng `ConcurrentHashMap<BlockPosition, HopperData> activeHoppers` được cập nhật tức thời theo vòng đời chunk (load/unload) và thêm/xóa phễu.
+   - `snapshotAll()` trả về view bất biến `Collections.unmodifiableCollection(activeHoppers.values())`, 0 cấp phát rác (zero-allocation), giúp CPU nhàn rỗi ngay cả khi vận hành hàng chục ngàn phễu.
+
+2. **[P1] Giao Dịch Chuyển Item Hoàn Lại Nguyên Tử (Transactional Rollback & Simulation)**:
+   - Trong `InventoryTransferTransaction.java`, bổ sung `simulateInsert` tính toán sức chứa trước khi thực hiện.
+   - Triển khai `insertWithRollback`: chụp ảnh nhanh mảng `ItemStack[]` của inventory đích trước khi ghi. Nếu tác vụ xác nhận (`onCommit`) trừ entity item thế giới gặp lỗi, giao dịch lập tức rollback toàn bộ slot rương về trạng thái nguyên bản.
+   - Bảo đảm 100% tính nguyên tử: không thể xảy ra hiện tượng nhân bản vật phẩm hoặc lệch số lượng dù server gặp lag hay ngoại lệ bất ngờ.
+
+3. **[P1] Giám Sát SQLite Checkpoint Chặt Chẽ & An Toàn Tắt Server**:
+   - Nâng cấp checkpoint khi tắt máy chủ lên `PRAGMA wal_checkpoint(TRUNCATE)` thu gọn file WAL về 0 byte.
+   - Kiểm tra và ghi log chi tiết giá trị 3 cột trả về từ SQLite (`busy`, `log`, `checkpointed`) để quản trị viên nắm rõ tình trạng database.
+   - Cảnh báo rõ ràng nếu hàng đợi ghi không xả hết trong 15 giây. Tuyệt đối không xóa file `-wal` / `-shm` thủ công.
+
+4. **14/14 Báo Cáo Kiểm Thử Tự Động (Surefire Reports)**:
+   - Bổ sung bộ kiểm thử `ChunkHopperCacheTest` kiểm chứng tính đúng đắn của registry phễu.
+   - Gói phân phối ZIP tích hợp sẵn thư mục `target/surefire-reports` (10 tệp XML & TXT) minh chứng độc lập toàn bộ 14 bài kiểm thử đều thành công.
+
+---
+
 # 🚀 Bản Phát Hành TNHoppers v0.6.1 (Gia Cố & Nâng Cấp Độ Bền Vững)
 
 **Phiên bản:** `v0.6.1`  

@@ -5,3 +5,5 @@ pom.xml
 .idea/
 *.log
 *.zip
+*.jar
+*.pdf
