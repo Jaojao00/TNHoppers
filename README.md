@@ -5,8 +5,10 @@
 # 🌪️ TNHoppers — Hệ Thống Phễu Không Dây & Hút Đồ Tối Tân
 
 > **Tác giả & Bản quyền:** © 2026 **Tài Nguyễn (TN)**  
+> **Phiên bản mới nhất:** `v0.6.2` (Production Ready)  
 > **Nền tảng hỗ trợ:** Paper / Purpur 1.20 - 1.21.x (Hỗ trợ đa luồng Folia dự kiến tại v0.7.0)  
 > **Môi trường vận hành:** Java 21+  
+> **Tài liệu hướng dẫn:** 📖 [Xem Mục Lục Wiki Đầy Đủ (WIKI.md)](WIKI.md)  
 > **Kênh hỗ trợ Discord:** [Tham gia Discord Server](https://discord.gg/kwqU3N4nkH)  
 > **Email liên hệ:** [tainguyenhr.dev@gmail.com](mailto:tainguyenhr.dev@gmail.com)  
 > **Bản quyền sở hữu:** Thuộc quyền tác giả độc quyền của **Tài Nguyễn (TN)**
@@ -63,6 +65,12 @@ Trong menu chính của phễu, chọn mục **Quản lý liên kết (Links)**:
   - **Lọc nghiêm ngặt (Strict NBT Filtering):** Bật tùy chọn này nếu muốn so khớp chính xác tên tùy biến, mô tả (lore), phù phép (enchantments) hoặc thuộc tính bình thuốc.
   - 📋 **Sao chép & Dán (Copy/Paste Filter):** Nhấp nút **Sao chép bộ lọc** để lưu cấu hình vào bộ nhớ tạm, sau đó sang rương đích khác bấm **Dán bộ lọc** để áp dụng ngay lập tức!
 - 🖱️ **Nhấp chuột PHẢI vào rương đích:** Gỡ liên kết rương đích an toàn.
+- 🏷️ **Đổi tên rương liên kết (Slot 47 - Name Tag):** Đặt tên gợi nhớ cho các rương đích (Ví dụ: `Rương Quặng`, `Rương Nông Sản`, `Rương Rác`...). Hỗ trợ đổi tên bằng cách Shift-Click rương hoặc chọn từ menu và nhập tên qua chat.
+- 🧙‍♂️ **Tự Động Phân Loại Đồ Hàng Loạt (Slot 48 - Auto-Sorter Wizard - Mới v0.6.2):**
+  - Chuẩn bị các món đồ mẫu trong túi đồ (hoặc thanh Hotbar 1–9).
+  - **Chuột TRÁI vào Slot 48:** Tự động gán bộ lọc **Whitelist** cho từng rương theo thứ tự các món mẫu trong túi, đồng thời **tự động đổi tên từng rương** theo tên tiếng Việt thân thiện của món đồ đó!
+  - **Chuột PHẢI vào Slot 48:** Tự động gán bộ lọc **Blacklist** cho từng rương.
+  - **Bảo vệ an toàn:** Túi đồ người chơi là 100% Read-Only, có xác nhận chống ghi đè vô ý (10 giây), tự động nhận diện ItemMeta (enchant, potion, custom name) và hỗ trợ hoàn tác rollback nếu database gặp lỗi.
 - 🔄 **Chế độ chuyển đồ (Slot 45):** Nhấp để chuyển đổi giữa:
   - `INSERT_BY_ORDER`: Ưu tiên lấp đầy rương đích theo thứ tự đã định sẵn.
   - `DISTRIBUTE_EQUALLY`: Chia đều luân phiên giữa các rương nhận.
@@ -159,8 +167,8 @@ Plugin sử dụng mô hình Adapter độc lập (`ProtectionAdapter`):
 
 | Lệnh | Cú pháp | Mô tả chi tiết | Quyền hạn yêu cầu | Mặc định |
 | :--- | :--- | :--- | :---: | :---: |
-| `/tnhoppers` | `/tnhoppers [menu]` | Mở Bảng Điều Khiển Tổng Quan (Control Panel) dạng GUI | Không yêu cầu | Mọi người |
-| `/tnhoppers hopper` | `/tnhoppers hopper` | Nhận 1 phễu không dây TNHoppers (gắn PDC) | `tnhoppers.admin` | OP |
+| `/tnhoppers` | `/tnhoppers [menu]` | Mở Bảng Điều Khiển Tổng Quan (Control Panel) dạng GUI | `tnhoppers.use` | Mọi người (`true`) |
+| `/tnhoppers get` | `/tnhoppers get <normal\|chunk>` | Nhận phễu không dây TNHoppers (gắn PDC bảo toàn cấp độ) | `tnhoppers.admin` | OP |
 | `/tnhoppers wand` | `/tnhoppers wand` | Nhận 1 gậy liên kết Link Wand (hạn 60s) | `tnhoppers.admin` | OP |
 | `/tnhoppers reload` | `/tnhoppers reload` | Nạp lại toàn bộ tệp cấu hình `config.yml` | `tnhoppers.admin` | OP |
 
@@ -229,7 +237,7 @@ logging:
 ## 🔨 VI. HƯỚNG DẪN CÀI ĐẶT (INSTALLATION GUIDE)
 
 ### Cài đặt trên máy chủ Paper / Purpur
-1. Tải bản phát hành `TNHoppers-0.6.0.jar` chính thức từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.
+1. Tải bản phát hành `TNHoppers-0.6.2.jar` chính thức từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.
 2. Thả file `.jar` vào thư mục `plugins/` của máy chủ Paper (hỗ trợ 1.20 trở lên).
 3. (Khuyến nghị) Cài đặt **Vault** (cùng plugin kinh tế như EssentialsX) để sử dụng hệ thống nâng cấp bằng tiền ingame, và **SuperiorSkyblock2** nếu là máy chủ Skyblock.
 4. Khởi động lại máy chủ hoặc gõ `/tnhoppers reload` để plugin khởi tạo cơ sở dữ liệu SQLite và cấu hình `config.yml`.

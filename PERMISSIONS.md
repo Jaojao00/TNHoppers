@@ -10,8 +10,10 @@
 
 | Lệnh | Cú pháp | Quyền hạn yêu cầu | Mô tả chi tiết |
 | :--- | :--- | :---: | :--- |
-| `/tnhoppers hopper` | `/tnhoppers hopper` | `tnhoppers.admin` | Phát 1 phễu không dây TNHoppers (có đánh dấu thẻ `custom_hopper` và gán UUID người sở hữu). |
+| `/tnhoppers` | `/tnhoppers [menu]` | `tnhoppers.use` | Mở Bảng Điều Khiển Tổng Quan (Control Panel) dạng GUI. Mặc định mở cho tất cả người chơi. |
+| `/tnhoppers get` | `/tnhoppers get <normal\|chunk>` | `tnhoppers.admin` | Phát phễu không dây TNHoppers (gắn PDC bảo toàn loại phễu và cấp độ). |
 | `/tnhoppers wand` | `/tnhoppers wand` | `tnhoppers.admin` | Phát 1 gậy liên kết Link Wand (có đánh dấu thẻ `link_wand`, tự hết hạn phiên sau 60 giây). |
+| `/tnhoppers reload` | `/tnhoppers reload` | `tnhoppers.admin` | Nạp lại toàn bộ tệp cấu hình `config.yml`. |
 
 ---
 
