@@ -1,0 +1,187 @@
+[CENTER]
+[IMG]https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg[/IMG]
+
+[SIZE=6][B][COLOR=#FF8C00]TNHOPPERS[/COLOR] [COLOR=#00BFFF]v0.6.2[/COLOR][/B][/SIZE]
+[SIZE=4][B][COLOR=#708090]Ultimate Wireless Hopper & Ground Item Vacuum Solution[/COLOR][/B][/SIZE]
+[SIZE=3][I]Engineered for Paper & Purpur 1.20 - 1.21.x (Java 21+)[/I][/SIZE]
+
+[URL='https://github.com/Jaojao00/TNHoppers/releases'][B][COLOR=#32CD32]▶ Download v0.6.2[/COLOR][/B][/URL] | [URL='https://discord.gg/kwqU3N4nkH'][B][COLOR=#5865F2]💬 Discord Support[/COLOR][/B][/URL] | [URL='https://github.com/Jaojao00/TNHoppers/blob/main/WIKI.md'][B][COLOR=#FFD700]📖 Official Wiki[/COLOR][/B][/URL]
+[/CENTER]
+
+[HR][/HR]
+
+[SIZE=5][B][COLOR=#FF8C00]⚡ What is TNHoppers?[/COLOR][/B][/SIZE]
+Are traditional vanilla hoppers dragging your server's [B]TPS[/B] down and inflating [B]MSPT[/B]? Do massive mob farms, cactus grinders, and sorting systems with thousands of hoppers freeze your server?
+
+[B]TNHoppers[/B] is a groundbreaking, production-hardened [B]Wireless Hopper & Suction System[/B] crafted by [B]Tài Nguyễn (TN)[/B]. It completely replaces long, laggy vanilla hopper chains with high-speed, direct wireless routing, an event-driven suction engine, and an atomic transaction architecture that guarantees 100% item conservation.
+
+[HR][/HR]
+
+[SIZE=5][B][COLOR=#00BFFF]🔥 Standout Features[/COLOR][/B][/SIZE]
+
+[LIST]
+[*][B][COLOR=#FFD700]🌪️ 2 Specialized Hopper Types:[/COLOR][/B]
+[LIST]
+[*][B]Normal Hopper (Radius Mode):[/B] Collects dropped items within a configurable spherical radius (upgradable from 3 to 16 blocks).
+[*][B]Chunk Hopper (Chunk Vacuum):[/B] Instantly vacuums [B]ALL[/B] ground items across the entire 16×16 chunk from bedrock to sky limit! Calls entity detection only once per cycle per chunk, keeping TPS at a locked 20.0.
+[/LIST]
+
+[*][B][COLOR=#FFD700]🪄 Wireless Linking with Link Wand:[/COLOR][/B]
+[LIST]
+[*]Link hoppers to chests, barrels, and shulkers wirelessly using [B]/tnhoppers wand[/B].
+[*]Double chest normalization automatically binds to the canonical master chest.
+[*][B]Two Transfer Modes:[/B] Sequential priority ([B]INSERT_BY_ORDER[/B]) or round-robin ([B]DISTRIBUTE_EQUALLY[/B]).
+[/LIST]
+
+[*][B][COLOR=#FFD700]🧙‍♂️ Brand New in v0.6.2: Auto-Sorter Wizard (Slot 48):[/COLOR][/B]
+[LIST]
+[*]Automatically set up complex chest sorting in seconds!
+[*]Place item samples in your inventory/hotbar and click Slot 48:
+[*]Left-click to assign [B]Whitelist[/B], Right-click to assign [B]Blacklist[/B].
+[*]Chests are [B]automatically renamed[/B] to friendly item titles (e.g. [I]Raw Iron, Lapis Lazuli, Diamond[/I])!
+[*]Non-mutating read-only sampling, 10-second overwrite protection, and transactional database rollback.
+[/LIST]
+
+[*][B][COLOR=#FFD700]🏷️ Custom Chest Renaming (Slot 47):[/COLOR][/B]
+[LIST]
+[*]Name your linked chests directly in chat or Shift-Click to distinguish between Ore, Farm, and Drop chests.
+[/LIST]
+
+[*][B][COLOR=#FFD700]📦 Visual Per-Link GUI Filtering (54-Slot Chest):[/COLOR][/B]
+[LIST]
+[*]Set Whitelist or Blacklist filters per linked container.
+[*]Strict ItemMeta matching accurately handles custom names, lore, enchantments, and potions.
+[*]One-click Copy & Paste clipboard to duplicate filters across chests.
+[*]Auto-Void Unmatched option destroys unwanted trash items automatically.
+[/LIST]
+
+[*][B][COLOR=#FFD700]💎 Interactive 4-Branch Upgrades GUI:[/COLOR][/B]
+[LIST]
+[*]Upgrade [B]Speed[/B] (down to 2 ticks), [B]Amount[/B] (up to 64 items), [B]Max Links[/B] (up to 15 chests), and [B]Distance/Radius[/B] (up to 250 blocks / 16 blocks).
+[*]Supports [B]Vault Economy[/B] with automatic [B]XP Levels[/B] fallback.
+[/LIST]
+
+[*][B][COLOR=#FFD700]🛡️ SuperiorSkyblock2 Island Protection:[/COLOR][/B]
+[LIST]
+[*]Full integration with island permissions (BUILD & CHEST).
+[*]Cross-island linking prevention blocks item theft between islands.
+[*]Real-time island membership validation freezes hoppers if a player is kicked from the island.
+[/LIST]
+
+[*][B][COLOR=#FFD700]🚀 Zero-Lag Engine & PDC Preservation:[/COLOR][/B]
+[LIST]
+[*]When broken or exploded, hoppers drop as items with all levels and types saved in [B]PDC metadata[/B].
+[*]Zero-allocation live view cache ([B]activeHoppersView()[/B]) prevents GC pauses.
+[*]Symmetrical transactional rollback restores both container and world entity if events fail.
+[*]SQLite WAL single-writer architecture with PRAGMA wal_checkpoint(TRUNCATE).
+[*]Backed by [B]19 Automated Surefire Unit Tests (0 failures)[/B].
+[/LIST]
+[/LIST]
+
+[HR][/HR]
+
+[SIZE=5][B][COLOR=#32CD32]💻 Commands & Permissions[/COLOR][/B][/SIZE]
+
+[TABLE]
+[TR]
+[TH][COLOR=#FF8C00]Command[/COLOR][/TH]
+[TH][COLOR=#FF8C00]Permission[/COLOR][/TH]
+[TH][COLOR=#FF8C00]Default[/COLOR][/TH]
+[TH][COLOR=#FF8C00]Description[/COLOR][/TH]
+[/TR]
+[TR]
+[TD]/tnhoppers[/TD]
+[TD]tnhoppers.use[/TD]
+[TD]Everyone (true)[/TD]
+[TD]Opens Interactive Control Panel GUI[/TD]
+[/TR]
+[TR]
+[TD]/tnhoppers get <normal|chunk>[/TD]
+[TD]tnhoppers.admin[/TD]
+[TD]OP[/TD]
+[TD]Gives a PDC-preserved TNHoppers item[/TD]
+[/TR]
+[TR]
+[TD]/tnhoppers wand[/TD]
+[TD]tnhoppers.admin[/TD]
+[TD]OP[/TD]
+[TD]Gives a 60-second Link Wand[/TD]
+[/TR]
+[TR]
+[TD]/tnhoppers reload[/TD]
+[TD]tnhoppers.admin[/TD]
+[TD]OP[/TD]
+[TD]Hot-reloads config.yml[/TD]
+[/TR]
+[/TABLE]
+
+[HR][/HR]
+
+[SIZE=5][B][COLOR=#FF8C00]⚙️ Configuration (config.yml)[/COLOR][/B][/SIZE]
+[SPOILER="Click to view default config.yml"]
+[CODE=yaml]
+storage:
+  sqlite-file: "tnhoppers.db"
+  busy-timeout-ms: 5000
+  journal-mode: "WAL"
+  synchronous: "NORMAL"
+
+wireless:
+  enabled: true
+  default-max-links: 1
+  default-max-distance: 15
+  default-mode: "INSERT_BY_ORDER"
+
+transfer:
+  check-interval-ticks: 2
+  interval-ticks: 20
+  max-items-per-cycle: 1
+  max-hoppers-per-cycle: 512
+
+suction:
+  enabled: true
+  mode: "RADIUS"
+  radius: 3.0
+  interval-ticks: 10
+  max-hoppers-per-cycle: 128
+  max-entities-per-cycle: 128
+  max-items-per-cycle: 64
+  respect-item-owner: true
+
+upgrades:
+  purchases-enabled: true
+  costs:
+    speed-base: 1000.0
+    amount-base: 2500.0
+    links-base: 1500.0
+    distance-base: 2000.0
+
+integrations:
+  superior-skyblock2:
+    enabled: true
+    require-island-to-place: true
+    allow-cross-island-linking: false
+    validate-island-membership-on-transfer: true
+  vault:
+    enabled: true
+[/CODE]
+[/SPOILER]
+
+[HR][/HR]
+
+[SIZE=5][B][COLOR=#00BFFF]🔨 Quick Installation[/COLOR][/B][/SIZE]
+[LIST=1]
+[*]Download [B]TNHoppers-0.6.2.jar[/B].
+[*]Place the .jar into your server's [B]plugins/[/B] folder.
+[*][I](Recommended)[/I] Install [B]Vault[/B] and [B]SuperiorSkyblock2[/B].
+[*]Restart your server. You're ready to go!
+[/LIST]
+
+[HR][/HR]
+
+[CENTER]
+[SIZE=4][B][COLOR=#5865F2]Need Help? Join Our Community Discord![/COLOR][/B][/SIZE]
+[URL='https://discord.gg/kwqU3N4nkH'][IMG]https://img.shields.io/badge/Discord-Join%20Community%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white[/IMG][/URL]
+
+[SIZE=2][COLOR=#708090]Author & Copyright © 2026 Tài Nguyễn (TN). All rights reserved.[/COLOR][/SIZE]
+[/CENTER]
