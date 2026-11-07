@@ -1,25 +1,10 @@
-# BuiltByBit Resource Description — TNHoppers v0.6.2
-
-> **Copy and paste the markdown content below directly into the BuiltByBit Resource Description editor.**
-
----
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Banner" width="450" />
-</p>
-
-<p align="center">
-  <a href="https://github.com/Jaojao00/TNHoppers/releases"><img src="https://img.shields.io/badge/Version-v0.6.2%20Release-blue.svg?style=for-the-badge" alt="Version"></a>
-  <a href="https://papermc.io"><img src="https://img.shields.io/badge/Paper-1.20%20--%201.21.x-red.svg?style=for-the-badge" alt="Platform"></a>
-  <a href="https://www.java.com"><img src="https://img.shields.io/badge/Java-21%2B-orange.svg?style=for-the-badge" alt="Java"></a>
-  <a href="https://discord.gg/kwqU3N4nkH"><img src="https://img.shields.io/badge/Discord-Support-5865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
-</p>
+[![Version](https://img.shields.io/badge/Version-v0.6.2%20Release-blue.svg)](https://github.com/Jaojao00/TNHoppers/releases) [![Paper](https://img.shields.io/badge/Paper-1.20%20--%201.21.x-red.svg)](https://papermc.io) [![Java](https://img.shields.io/badge/Java-21%2B-orange.svg)](https://www.java.com) [![Discord](https://img.shields.io/badge/Discord-Support-5865F2.svg?logo=discord&logoColor=white)](https://discord.gg/kwqU3N4nkH)
 
 ---
 
 ## 🌪️ What is TNHoppers?
 
-Are traditional vanilla hoppers dragging your server's **TPS** and inflating **MSPT** into the red zone? Do massive mob farms, sugarcane towers, and item sorters with hundreds of hoppers lag your Skyblock or Survival realm?
+Are traditional vanilla hoppers dragging your server's **TPS** down and inflating **MSPT** into the red zone? Do massive mob farms, sugarcane towers, and item sorters with hundreds of hoppers lag your Skyblock or Survival realm?
 
 **TNHoppers** is a high-performance, next-generation **Wireless Hopper & Suction System** built from the ground up for modern **Paper and Purpur 1.20 - 1.21.x** servers. Designed by **Tài Nguyễn (TN)**, it completely eliminates laggy vanilla hopper chains by routing items wirelessly through a budgeted, event-driven engine backed by a zero-allocation live view cache and SQLite WAL storage.
 
@@ -92,10 +77,6 @@ Players can invest in-game economy or XP levels to upgrade 4 core stats:
 ## ⚙️ Configuration Preview (`config.yml`)
 
 ```yaml
-# ==========================================
-#          TNHoppers - Tài Nguyễn (TN)
-# ==========================================
-
 storage:
   sqlite-file: "tnhoppers.db"
   busy-timeout-ms: 5000
@@ -148,7 +129,7 @@ integrations:
 
 1. Download `TNHoppers-0.6.2.jar`.
 2. Drop it into your server's `plugins/` directory.
-3. (Optional but recommended) Install **Vault** + Economy Provider (e.g. EssentialsX) and **SuperiorSkyblock2**.
+3. *(Optional but recommended)* Install **Vault** + Economy Provider (e.g. EssentialsX) and **SuperiorSkyblock2**.
 4. Restart your server. Everything will generate automatically!
 
 ---
@@ -161,4 +142,5 @@ integrations:
 * 📦 **GitHub Releases:** [Download Latest Builds](https://github.com/Jaojao00/TNHoppers/releases)
 
 ---
-<p align="center"><b>© 2026 Tài Nguyễn (TN) — All Rights Reserved.</b></p>
+
+**© 2026 Tài Nguyễn (TN) — All Rights Reserved.**
