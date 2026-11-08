@@ -151,18 +151,43 @@ Trong menu **Liên kết (Links)** của phễu:
   * Phân biệt ItemMeta đa chiều: Tự động bật `strict = true` khi đồ mẫu có enchant, potion, lore hoặc custom name.
   * Rollback tức thời: Nếu lưu database SQLite gặp lỗi, cache RAM lập tức hoàn tác về cấu hình ban đầu.
 
+### 3.5 Lớp Bảo Vệ Phá Hủy & Chống Nổ (Break & Explosion Protection)
+* **Khóa phá hủy rương đích liên kết:** Rương/thùng chứa đang được liên kết với phễu TNHoppers không thể bị phá bởi bất kỳ người chơi nào. Khi cố phá, sự kiện `BlockBreakEvent` bị hủy ngay lập tức, phát âm thanh cảnh báo lỗi và yêu cầu gỡ liên kết trước trong menu phễu.
+* **Chuẩn hóa rương đôi (Double Chest Normalization):** Nhận diện chính xác cả nửa trái và nửa phải của rương đôi. Đập vào bất kỳ nửa nào cũng được bảo vệ an toàn.
+* **Khóa phá hủy phễu TNHoppers:** Phễu đang có liên kết rương đích sẽ không thể bị phá cho đến khi toàn bộ liên kết được gỡ bỏ trong GUI.
+* **Miễn nhiễm nổ 100%:** Cả phễu và rương liên kết đều được lọc ra khỏi danh sách khối bị phá hủy của TNT, Creeper, Wither và Ender Dragon trong `ExplosionCleanupListener`.
+
 ---
 
-## ⚡ CHƯƠNG 4: HỆ THỐNG NÂNG CẤP & KINH TẾ
+## ⚡ CHƯƠNG 4: HỆ THỐNG NÂNG CẤP & KHO ẢO (UPGRADES & DEEP STORAGE)
 
 | Nhánh nâng cấp | Biểu tượng | Tác dụng | Giới hạn |
 | :--- | :---: | :--- | :---: |
 | **Tốc độ (Speed)** | ⚡ | Giảm thời gian trễ giữa các lần chuyển (từ 20 ticks xuống 15, 10, 5, 2 ticks) | Cấp 5 |
 | **Số lượng (Amount)** | 📦 | Tăng số item chuyển mỗi lần (từ 1 lên 4, 16, 32, 64 items) | Cấp 5 |
+| **Dung tích Kho Ảo (Deep Storage)** | 🛢️ | Sức chứa bộ đệm ảo khi rương đầy (từ 10,000 lên 50,000, 100,000, 250,000 items) | Cấp 4 |
 | **Số liên kết (Links)** | 🔗 | Mở rộng số lượng rương kết nối cùng lúc (từ 1 lên 3, 5, 8, 15 rương) | Cấp 5 |
 | **Bán kính / Khoảng cách** | 📏 | Tăng bán kính hút đồ rơi (lên tới 16 blocks) và khoảng cách liên kết (250 blocks) | Cấp 5 |
 
 * Người chơi thanh toán bằng tiền tệ Vault. Nếu server không có Vault, hệ thống tự động chuyển sang sử dụng cấp độ kinh nghiệm (XP Levels).
+
+### 4.4 Kho Lưu Trữ Ảo Mở Rộng (Virtual Deep Storage — Option 2)
+* **Khái niệm:** Khi rương vật lý liên kết đầy 100%, đồ hút hoặc chuyển đến sẽ không bị nghẹt mà tự động tràn vào bộ đệm ảo (Deep Storage).
+* **4 Mốc nâng cấp:**
+  * **Cấp 1:** `10,000` items (Mặc định khi tạo liên kết)
+  * **Cấp 2:** `50,000` items ($5,000 Vault / XP)
+  * **Cấp 3:** `100,000` items ($15,000 Vault / XP)
+  * **Cấp 4:** `250,000` items ($50,000 Vault / XP — Cấp tối đa)
+* **Tự động xả vào rương (Auto-Drain):** Khi có ô trống trong rương vật lý, phễu tự động xả mượt các item trong kho ảo vào rương theo chu kỳ tick.
+* **Trình xem & Rút đồ từ Kho Ảo (Deep Storage Viewer):**
+  * Nhấp giữa chuột (Middle-click) vào rương liên kết trong menu Links, hoặc bấm nút Kho Ảo (Slot 47) trong menu Bộ lọc.
+  * Xem danh sách các món đồ và số lượng thực tế đang lưu trong kho ảo.
+  * **Chuột TRÁI:** Rút 1 Stack (64 items) vào túi đồ.
+  * **Chuột PHẢI:** Rút 1 item.
+  * **Shift + Click:** Rút toàn bộ số lượng vào túi đồ.
+  * **Nút "Xả Vào Rương Ngay" (Slot 53):** Ép xả đồ vào rương vật lý ngay lập tức nếu rương có ô trống.
+* **Chống mất đồ khi hủy liên kết:** Không cho phép hủy liên kết nếu kho ảo của rương đó còn chứa vật phẩm.
+* **Lưu trữ SQLite WAL (`hopper_virtual_storage`):** Dữ liệu được lưu vĩnh viễn và an toàn tuyệt đối 100% qua restart server hoặc dỡ nạp chunk.
 
 ---
 
@@ -193,7 +218,7 @@ Trong menu **Liên kết (Links)** của phễu:
 * **Live View Registry (`activeHoppersView()`):** Duy trì chỉ mục kép phẳng `ConcurrentHashMap<BlockPosition, HopperData>`. Chi phí cấp phát = 0 allocation, con trỏ ngân sách duyệt an toàn không bị `ConcurrentModificationException`.
 * **Giao dịch Hoàn nguyên Đối xứng (Symmetrical Rollback):** Lưu trữ snapshot kho chứa và trạng thái thực thể ngoài thế giới. Nếu có ngoại lệ, cả kho chứa lẫn thực thể thế giới đều được khôi phục nguyên trạng.
 * **SQLite WAL Single-Writer:** Thực thi trên luồng ghi duy nhất, chế độ WAL với timeout 5000ms. Khi tắt máy chủ, chạy `PRAGMA wal_checkpoint(TRUNCATE)` kèm kiểm tra mã chẩn đoán `busy/log/checkpointed`.
-* **19 Unit Tests Độc Lập:** Bộ kiểm thử tự động xác minh tính bảo toàn khối lượng và sự ổn định của cache.
+* **24 Unit Tests Độc Lập:** Bộ kiểm thử tự động xác minh tính bảo toàn khối lượng, cơ chế phát hiện liên kết bảo vệ phá hủy rương, và tính toán 4 mốc sức chứa kho ảo Deep Storage (10k, 50k, 100k, 250k items) đạt tỷ lệ vượt qua 100%.
 
 ---
 

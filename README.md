@@ -66,7 +66,8 @@ Trong menu chính của phễu, chọn mục **Quản lý liên kết (Links)**:
   - 📋 **Sao chép & Dán (Copy/Paste Filter):** Nhấp nút **Sao chép bộ lọc** để lưu cấu hình vào bộ nhớ tạm, sau đó sang rương đích khác bấm **Dán bộ lọc** để áp dụng ngay lập tức!
 - 🖱️ **Nhấp chuột PHẢI vào rương đích:** Gỡ liên kết rương đích an toàn.
 - 🏷️ **Đổi tên rương liên kết (Slot 47 - Name Tag):** Đặt tên gợi nhớ cho các rương đích (Ví dụ: `Rương Quặng`, `Rương Nông Sản`, `Rương Rác`...). Hỗ trợ đổi tên bằng cách Shift-Click rương hoặc chọn từ menu và nhập tên qua chat.
-- 🧙‍♂️ **Tự Động Phân Loại Đồ Hàng Loạt (Slot 48 - Auto-Sorter Wizard - Mới v0.6.2):**
+- 📦 **Kho Ảo Cho Từng Rương (Deep Storage Viewer):** Hiển thị trực quan `📦 Kho Ảo: X / Y items` ngay trên lore của mỗi rương. **Nhấp chuột giữa (Middle-click)** hoặc mở menu bộ lọc để xem, rút đồ (1 item, 64 items, rút tất cả) hoặc bấm nút **Xả Vào Rương Ngay (Slot 53)**!
+- 🧙‍♂️ **Tự Động Phân Loại Đồ Hàng Loạt (Slot 48 - Auto-Sorter Wizard):**
   - Chuẩn bị các món đồ mẫu trong túi đồ (hoặc thanh Hotbar 1–9).
   - **Chuột TRÁI vào Slot 48:** Tự động gán bộ lọc **Whitelist** cho từng rương theo thứ tự các món mẫu trong túi, đồng thời **tự động đổi tên từng rương** theo tên tiếng Việt thân thiện của món đồ đó!
   - **Chuột PHẢI vào Slot 48:** Tự động gán bộ lọc **Blacklist** cho từng rương.
@@ -80,18 +81,41 @@ Trong menu chính của phễu, chọn mục **Quản lý liên kết (Links)**:
 
 ---
 
-### 4. Bảng nâng cấp phễu (Interactive Upgrades GUI)
-Người chơi có thể đầu tư tiền tệ Vault hoặc XP Levels để cường hóa 4 nhánh chỉ số:
+### 4. Lớp bảo vệ phá hủy & Chống nổ tuyệt đối (Break & Explosion Protection)
+- 🔒 **Khóa phá hủy rương đích liên kết:** Bất kỳ rương, thùng gỗ hay Shulker nào đang được phễu TNHoppers liên kết đều **không thể bị đập phá** (`BlockBreakEvent` bị hủy lập tức, phát âm thanh cảnh báo lỗi và nhắc nhở người chơi mở GUI phễu để gỡ liên kết trước).
+- 🧩 **Chuẩn hóa Rương Đôi (Double Chest Normalization):** Tự động nhận diện chính xác cả nửa trái và nửa phải của rương đôi. Đập vào bất kỳ nửa nào cũng được bảo vệ an toàn.
+- 🛡️ **Khóa phá hủy phễu TNHoppers:** Phễu đang có liên kết rương đích sẽ không thể bị tháo dỡ cho đến khi toàn bộ liên kết được gỡ bỏ trong GUI.
+- 💥 **Miễn nhiễm nổ 100%:** Cả phễu và rương liên kết đều được loại khỏi danh sách khối bị phá hủy bởi TNT, Creeper, Wither và Ender Dragon trong `ExplosionCleanupListener`.
+
+---
+
+### 5. Kho lưu trữ ảo mở rộng (Virtual Deep Storage — Option 2)
+Giải pháp mở rộng kho vô tận không cần xếp hàng trăm rương:
+- 📈 **4 Mốc nâng cấp dung tích:**
+  - **Cấp 1:** `10,000` items (Mặc định có sẵn ngay khi tạo liên kết)
+  - **Cấp 2:** `50,000` items ($5,000 Vault / XP)
+  - **Cấp 3:** `100,000` items ($15,000 Vault / XP)
+  - **Cấp 4:** `250,000` items ($50,000 Vault / XP — Cấp tối đa)
+- 🌊 **Tự động tràn vào kho ảo (Overflow Buffer):** Khi rương vật lý đầy 100%, các vật phẩm hút vào sẽ tự động tràn vào bộ đệm ảo của liên kết đó, không bao giờ bị nghẹt hay rơi ra ngoài.
+- 🚿 **Tự động xả đồ mượt mà (Auto-Drain):** Khi người chơi lấy bớt đồ trong rương tạo ô trống, phễu sẽ tự động trích xuất các item từ kho ảo xả dần vào rương theo chu kỳ tick.
+- 🛡️ **Chống mất đồ khi hủy liên kết:** Nếu kho ảo của rương đích còn chứa vật phẩm, hệ thống từ chối gỡ liên kết để bảo toàn 100% tài sản cho người chơi.
+- 🗄️ **Bền vững qua SQLite WAL (`hopper_virtual_storage`):** Dữ liệu được lưu vĩnh viễn, an toàn tuyệt đối qua các lần restart server hoặc unload chunk.
+
+---
+
+### 6. Bảng nâng cấp phễu (Interactive Upgrades GUI)
+Người chơi có thể đầu tư tiền tệ Vault hoặc XP Levels để cường hóa **5 nhánh chỉ số**:
 1. ⚡ **Tốc độ (Speed):** Giảm thời gian chờ giữa các lần chuyển đồ (từ 20 ticks xuống 15, 10, 5, 2 ticks/lần).
 2. 📦 **Số lượng (Amount):** Tăng lượng vật phẩm chuyển mỗi chu kỳ (từ 1 item lên 4, 16, 32, 64 item/lần).
-3. 🔗 **Số liên kết (Links):** Mở rộng số lượng rương kết nối cùng lúc (từ 1 rương lên 3, 5, 8, 15 rương).
-4. 📏 **Khoảng cách / Bán kính (Distance & Radius):** 
+3. 🛢️ **Dung tích Kho Ảo (Deep Storage - Slot 13):** Mở rộng sức chứa bộ đệm ảo cho mỗi rương liên kết (từ 10,000 lên 50,000, 100,000 và 250,000 items).
+4. 🔗 **Số liên kết (Links):** Mở rộng số lượng rương kết nối cùng lúc (từ 1 rương lên 3, 5, 8, 15 rương).
+5. 📏 **Khoảng cách / Bán kính (Distance & Radius):** 
    - Với **Normal Hopper**: Tăng khoảng cách liên kết rương (lên đến 250 blocks) VÀ mở rộng bán kính hút đồ rơi (lên đến 16 blocks).
    - Với **Chunk Hopper**: Tăng khoảng cách liên kết rương không dây tối đa.
 
 ---
 
-### 5. Cơ chế hút đồ và điều hướng trực tiếp (Smart Direct Routing)
+### 7. Cơ chế hút đồ và điều hướng trực tiếp (Smart Direct Routing)
 Khi phễu hút vật phẩm rơi tự do từ sàn farm:
 - **Chuyển thẳng tới rương đích (Direct Routing):** Vật phẩm được chuyển **thẳng đến các rương đích phù hợp với bộ lọc** mà không cần qua bước trung gian ở kho đồ của phễu.
 - **Tự hủy rác (Voiding):** Nếu tính năng `voidUnmatched` được bật, các vật phẩm không có rương nào nhận (ví dụ thịt thối, xương trong farm khoáng sản) sẽ bị xóa bỏ trực tiếp.
@@ -100,7 +124,7 @@ Khi phễu hút vật phẩm rơi tự do từ sàn farm:
 
 ---
 
-### 6. Bảng điều khiển lệnh `/tnhoppers` (Command Menu)
+### 8. Bảng điều khiển lệnh `/tnhoppers` (Command Menu)
 Gõ lệnh `/tnhoppers` (hoặc `/tnhoppers menu`) để mở ngay bảng điều khiển tổng quan:
 - 🌪️ **Lấy Phễu Thường (Normal Hopper):** Nhận 1 phễu hút theo bán kính.
 - 🌐 **Lấy Phễu Chunk (Chunk Hopper):** Nhận 1 phễu hút toàn chunk 16x16.
@@ -218,6 +242,7 @@ upgrades:
     amount-base: 2500.0             # Giá cơ bản nâng cấp Số lượng item
     links-base: 1500.0              # Giá cơ bản nâng cấp Số lượng rương đích
     distance-base: 2000.0           # Giá cơ bản nâng cấp Khoảng cách
+    storage-base: 5000.0            # Giá cơ bản nâng cấp Kho Ảo Deep Storage (Cấp 2: 50k, Cấp 3: 100k, Cấp 4: 250k)
 
 integrations:
   superior-skyblock2:

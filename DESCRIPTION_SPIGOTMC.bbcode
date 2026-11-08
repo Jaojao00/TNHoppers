@@ -55,26 +55,36 @@ Are traditional vanilla hoppers dragging your server's [B]TPS[/B] down and infla
 [*]Auto-Void Unmatched option destroys unwanted trash items automatically.
 [/LIST]
 
-[*][B][COLOR=#FFD700]💎 Interactive 4-Branch Upgrades GUI:[/COLOR][/B]
+[*][B][COLOR=#FFD700]💎 Interactive 5-Branch Upgrades GUI:[/COLOR][/B]
 [LIST]
-[*]Upgrade [B]Speed[/B] (down to 2 ticks), [B]Amount[/B] (up to 64 items), [B]Max Links[/B] (up to 15 chests), and [B]Distance/Radius[/B] (up to 250 blocks / 16 blocks).
+[*]Upgrade [B]Speed[/B] (down to 2 ticks), [B]Amount[/B] (up to 64 items), [B]Max Links[/B] (up to 15 chests), [B]Distance/Radius[/B] (up to 250 blocks / 16 blocks), and [B]Virtual Deep Storage[/B] (up to 250,000 items)!
 [*]Supports [B]Vault Economy[/B] with automatic [B]XP Levels[/B] fallback.
 [/LIST]
 
-[*][B][COLOR=#FFD700]🛡️ SuperiorSkyblock2 Island Protection:[/COLOR][/B]
+[*][B][COLOR=#FFD700]🌌 Virtual Deep Storage Buffer (10,000 → 250,000 Items):[/COLOR][/B]
 [LIST]
-[*]Full integration with island permissions (BUILD & CHEST).
-[*]Cross-island linking prevention blocks item theft between islands.
-[*]Real-time island membership validation freezes hoppers if a player is kicked from the island.
+[*]Linked containers never drop or lose items when physical storage is full!
+[*]Upgradable capacities: [B]10k → 50k → 100k → 250k items[/B].
+[*]Auto-drains stored items back into chest slots whenever space opens up.
+[*]Interactive Deep Storage viewer GUI to inspect contents and withdraw stacks on demand.
+[*]Anti-loss protection: unlinking a container is strictly blocked until its virtual buffer is emptied.
+[/LIST]
+
+[*][B][COLOR=#FFD700]🛡️ Active Break & Explosion Protection:[/COLOR][/B]
+[LIST]
+[*]Prevents accidental player breaking of linked hoppers and linked destination containers (single/double chests, barrels, shulkers).
+[*]Blocks break events with an audio chime and warning message — must unlink in GUI first!
+[*]Immunity to TNT, Creeper, and Wither explosion damage for all linked network blocks.
+[*]SuperiorSkyblock2 island permission validation (BUILD & CHEST) with cross-island isolation.
 [/LIST]
 
 [*][B][COLOR=#FFD700]🚀 Zero-Lag Engine & PDC Preservation:[/COLOR][/B]
 [LIST]
-[*]When broken or exploded, hoppers drop as items with all levels and types saved in [B]PDC metadata[/B].
+[*]When unlinked and broken, hoppers drop as items with all levels and types saved in [B]PDC metadata[/B].
 [*]Zero-allocation live view cache ([B]activeHoppersView()[/B]) prevents GC pauses.
 [*]Symmetrical transactional rollback restores both container and world entity if events fail.
 [*]SQLite WAL single-writer architecture with PRAGMA wal_checkpoint(TRUNCATE).
-[*]Backed by [B]19 Automated Surefire Unit Tests (0 failures)[/B].
+[*]Backed by [B]24 Automated Surefire Unit Tests (0 failures)[/B].
 [/LIST]
 [/LIST]
 
@@ -155,6 +165,7 @@ upgrades:
     amount-base: 2500.0
     links-base: 1500.0
     distance-base: 2000.0
+    storage-base: 5000.0
 
 integrations:
   superior-skyblock2:

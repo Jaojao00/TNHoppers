@@ -2,6 +2,49 @@
   <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
 </p>
 
+# 🚀 Bản Phát Hành TNHoppers v0.6.3 (Break Protection, Virtual Deep Storage & 24/24 Tests Passed)
+
+**Phiên bản:** `v0.6.3`  
+**Ngày phát hành:** 09/11/2026  
+**Tác giả:** Tài Nguyễn (TN)  
+**Tương thích:** Paper / Purpur 1.20 - 1.21.x (Java 21+)  
+
+---
+
+### 🛡️ Các tính năng đột phá trong bản phát hành này:
+
+1. **[Tính năng mới] 🔒 Lớp Bảo Vệ Phá Hủy & Chống Nổ Tuyệt Đối (Break & Explosion Protection)**:
+   - **Bảo vệ Rương đích liên kết:** Ngăn chặn tuyệt đối mọi hành vi đập phá rương/thùng chứa đang được liên kết với phễu TNHoppers (`BlockBreakEvent` bị hủy ngay lập tức, phát âm thanh cảnh báo lỗi và gửi thông báo màu đỏ yêu cầu gỡ liên kết trước).
+   - **Chuẩn hóa Rương Đôi (Double Chest Normalization):** Nhận diện chính xác cả nửa bên trái và bên phải của rương đôi. Đập vào bất kỳ nửa nào cũng được bảo vệ an toàn.
+   - **Bảo vệ Phễu TNHoppers:** Phễu đang có liên kết rương đích sẽ không thể bị phá cho đến khi toàn bộ liên kết được gỡ bỏ trong GUI.
+   - **Miễn nhiễm nổ 100%:** Cả phễu và rương liên kết đều được lọc ra khỏi danh sách phá hủy của TNT, Creeper, Wither và Ender Dragon trong `ExplosionCleanupListener`.
+
+2. **[Tính năng mới] 📦 Kho Lưu Trữ Ảo Mở Rộng (Virtual Deep Storage — 10k đến 250k Items)**:
+   - **Dung tích đệm ảo nâng cấp 4 cấp độ:**
+     - **Cấp 1:** `10,000` items (Mặc định khi tạo liên kết)
+     - **Cấp 2:** `50,000` items ($5,000 Vault / XP)
+     - **Cấp 3:** `100,000` items ($15,000 Vault / XP)
+     - **Cấp 4:** `250,000` items ($50,000 Vault / XP — Cấp tối đa)
+   - **Tự động tràn vào kho ảo (Overflow Buffer):** Khi rương vật lý đầy 100%, đồ hút hoặc chuyển đến sẽ tự động lưu vào kho ảo của liên kết đó mà không bị nghẹt hay rơi vãi ra ngoài.
+   - **Tự động xả đồ mượt mà (Auto-Drain):** Khi người chơi lấy bớt đồ trong rương vật lý tạo ô trống, phễu sẽ tự động trích xuất các item từ kho ảo xả dần vào rương theo chu kỳ tick.
+   - **Trình xem & Rút đồ từ Kho Ảo (Deep Storage Viewer):**
+     - Mở trực tiếp bằng cách **Nhấp chuột giữa (Middle-click)** vào rương liên kết trong menu Links, hoặc bấm nút Kho Ảo (Slot 47) trong menu Bộ lọc.
+     - Cho phép người chơi rút 1 item (Chuột Phải), 1 Stack 64 items (Chuột Trái), hoặc rút toàn bộ (Shift + Click).
+     - Nút **"Xả Vào Rương Ngay" (Slot 53)** cho phép ép xả toàn bộ đồ từ kho ảo vào ô trống rương đích tức thì.
+   - **Bảo vệ chống mất đồ khi hủy liên kết:** Nếu kho ảo của rương đích còn chứa vật phẩm, hệ thống lập tức từ chối gỡ liên kết và cảnh báo người chơi phải rút hết đồ ra trước.
+   - **Cơ sở dữ liệu SQLite WAL (`hopper_virtual_storage`):** Dữ liệu kho ảo được lưu an toàn xuống SQLite, không bao giờ mất đồ khi restart server hay chunk bị dỡ nạp.
+
+3. **[Nâng cấp GUI] ⚙️ Nhánh Nâng Cấp Dung Tích Kho Ảo (Slot 13 - Barrel)**:
+   - Bảng điều khiển Upgrades GUI bổ sung Slot 13 biểu tượng Thùng Gỗ (Barrel) hiển thị chi tiết cấp độ, sức chứa hiện tại, sức chứa tiếp theo và giá nâng cấp bằng tiền Vault / XP.
+
+4. **🧪 24/24 Bài Kiểm Thử Độc Lập Đạt 100% (Surefire Unit Tests)**:
+   - Bổ sung `VirtualStorageCapacityTest` kiểm thử tính toán sức chứa 4 cấp độ và tính bất biến của dữ liệu.
+   - Bổ sung `testDestinationLinkedAndBreakProtection` trong `ChunkHopperCacheTest` kiểm thử cơ chế phát hiện liên kết rương và bảo vệ phá hủy.
+   - Toàn bộ **24 bài kiểm thử độc lập** đều vượt qua (**0 failures, 0 errors, 0 skipped**).
+   - Đóng gói ProGuard Obfuscated Jar `TNHoppers-0.6.2.jar` (14.3 MB) tối ưu hóa kích thước và bảo mật mã nguồn độc quyền của **Tài Nguyễn (TN)**.
+
+---
+
 # 🚀 Bản Phát Hành TNHoppers v0.6.2 (Live View Cache, Symmetrical Rollback & Hardened Auto-Sorter)
 
 **Phiên bản:** `v0.6.2`  
