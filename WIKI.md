@@ -61,7 +61,7 @@ Chào mừng bạn đến với **Mục Lục Wiki Chính Thức của TNHoppers
 │   ├── 7.2 Giao dịch hoàn nguyên đối xứng chống dupe (Symmetrical Rollback)
 │   ├── 7.3 Con trỏ ngân sách quét phễu (Round-Robin Budget Cursor - 20 TPS)
 │   ├── 7.4 SQLite WAL Single-Writer & Cơ chế Checkpoint TRUNCATE
-│   └── 7.5 Minh chứng kiểm thử độc lập (19/19 Surefire Unit Tests)
+│   └── 7.5 Minh chứng kiểm thử độc lập (24/24 Surefire Unit Tests)
 │
 ├── ❓ 8. KHẮC PHỤC SỰ CỐ & CÂU HỎI THƯỜNG GẶP (TROUBLESHOOTING & FAQ)
 │   ├── 8.1 Phễu không hút đồ hoặc rương không nhận đồ
@@ -85,12 +85,13 @@ Chào mừng bạn đến với **Mục Lục Wiki Chính Thức của TNHoppers
 * **Không rò rỉ bộ nhớ (Zero Memory Leak):** Bộ đệm cache chỉ lưu toạ độ bất biến `BlockPosition`, không giữ tham chiếu tới `World`, `Chunk` hay `Block`.
 * **An toàn giao dịch tuyệt đối:** Tính toán sức chứa trước khi chuyển (`simulateInsert`) và hoàn nguyên đối xứng (`insertWithRollback`).
 
-### 1.2 Yêu cầu hệ thống
-* **Máy chủ:** Paper, Purpur hoặc các bản fork tương thích Paper API từ phiên bản **1.20 đến 1.21.x**.
-* **Java:** **Java 21** trở lên.
-* **Dependencies tùy chọn (Khuyến nghị):**
-  * `Vault` + plugin kinh tế (EssentialsX, CMI...): Cho phép người chơi mua nâng cấp bằng tiền ingame.
-  * `SuperiorSkyblock2`: Tự động kích hoạt cơ chế bảo vệ đảo nghiêm ngặt.
+### 1.2 Yêu cầu hệ thống & Phụ thuộc (Dependencies & Requirements)
+* **Java:** **Java 21 trở lên** (Khuyến nghị sử dụng [Eclipse Temurin Java 21](https://adoptium.net/temurin/releases/?version=21)).
+  > *Lưu ý về Minecraft 1.20:* TNHoppers được lập trình và tối ưu hóa bằng các tính năng mới của Java 21 LTS (Records, Pattern Matching). Mặc dù vanilla 1.20 ban đầu dùng Java 17, các nền tảng Paper/Purpur 1.20 đều hỗ trợ Java 21 toàn diện. Vui lòng đảm bảo máy chủ chạy với Java 21+ JRE.
+* **Nền tảng máy chủ:** [Paper](https://papermc.io/downloads/paper), [Purpur](https://purpurmc.org/) hoặc các bản fork tương thích Paper API từ phiên bản **1.20 đến 1.21.x** (dự kiến hỗ trợ Folia tại v0.7.0).
+* **Phụ thuộc mềm tùy chọn (Soft Dependencies):**
+  * **[Vault](https://www.spigotmc.org/resources/vault.34315/)** (+ plugin kinh tế như EssentialsX): Cho phép người chơi mua nâng cấp phễu bằng tiền trong server. Nếu thiếu Vault, plugin sẽ tự động dùng cấp độ XP thay thế.
+  * **[SuperiorSkyblock2](https://bg-software.com/superiorskyblock/)**: Tự động kích hoạt cơ chế bảo vệ đảo nghiêm ngặt (kiểm tra quyền `BUILD` & `CHEST`, chặn chuyển đồ xuyên đảo). Nếu không có, plugin sẽ tự chạy chế độ độc lập (NoOp) cho Survival/SMP.
 
 ### 1.3 Hướng dẫn cài đặt
 1. Tải bản phát hành chính thức `TNHoppers-0.6.2.jar` từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.

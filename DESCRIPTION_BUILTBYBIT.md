@@ -134,12 +134,26 @@ integrations:
 
 ---
 
+## 📋 Dependencies & System Requirements
+
+### ⚡ Required Dependencies:
+* **Java 21+ Runtime:** [Eclipse Temurin Java 21](https://adoptium.net/temurin/releases/?version=21) or Oracle Java 21.
+  > **Note on Minecraft 1.20:** TNHoppers is compiled using Java 21 LTS bytecode (records, modern pattern matching). While vanilla 1.20.0–1.20.4 initially defaulted to Java 17, Paper/Purpur 1.20 runs smoothly on Java 21. Ensure your server startup command points to a Java 21+ JRE.
+* **Server Software:** [Paper](https://papermc.io/downloads/paper), [Purpur](https://purpurmc.org/), or Folia for Minecraft 1.20 – 1.21.x.
+
+### 🔌 Optional Integrations (Soft Dependencies):
+* **[Vault](https://www.spigotmc.org/resources/vault.34315/) (Economy):** Enables purchasing hopper upgrades with server currency. *If Vault is absent, TNHoppers automatically falls back to vanilla player XP levels.*
+* **[SuperiorSkyblock2](https://bg-software.com/superiorskyblock/) (Island Protection):** Enables island boundary checks, BUILD & CHEST permission validation, and anti-theft cross-island protection. *If not installed, TNHoppers operates in standalone NoOp mode for Survival/SMP.*
+
+---
+
 ## 🔨 Installation Guide
 
-1. Download `TNHoppers-0.6.2.jar`.
-2. Drop it into your server's `plugins/` directory.
-3. *(Optional but recommended)* Install **Vault** + Economy Provider (e.g. EssentialsX) and **SuperiorSkyblock2**.
-4. Restart your server. Everything will generate automatically!
+1. Ensure your server is running on **Java 21+** and **Paper 1.20 - 1.21.x**.
+2. Download `TNHoppers-0.6.2.jar`.
+3. Drop it into your server's `plugins/` directory.
+4. *(Optional)* Install **Vault** and/or **SuperiorSkyblock2**.
+5. Restart your server. Everything will generate automatically!
 
 ---
 

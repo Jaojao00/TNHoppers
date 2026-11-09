@@ -169,6 +169,7 @@ upgrades:
     amount-base: 2500.0
     links-base: 1500.0
     distance-base: 2000.0
+    storage-base: 5000.0
 
 integrations:
   superior-skyblock2:
@@ -183,11 +184,31 @@ integrations:
 
 [HR][/HR]
 
+[SIZE=5][B][COLOR=#FFD700]📋 Dependencies & System Requirements[/COLOR][/B][/SIZE]
+
+[B][COLOR=#FF4500]⚡ Required Dependencies:[/COLOR][/B]
+[LIST]
+[*][B]Java 21+ Runtime:[/B] [URL='https://adoptium.net/temurin/releases/?version=21'][COLOR=#00BFFF]Download Eclipse Temurin Java 21[/COLOR][/URL]
+[I]Note on Minecraft 1.20:[/I] TNHoppers is compiled using Java 21 LTS bytecode (records, modern pattern matching). While vanilla 1.20.0-1.20.4 originally defaulted to Java 17, Paper & Purpur 1.20 run seamlessly on Java 21. Ensure your server startup command points to Java 21+.
+[*][B]Server Software:[/B] [URL='https://papermc.io/downloads/paper'][COLOR=#00BFFF]Paper[/COLOR][/URL], [URL='https://purpurmc.org/'][COLOR=#00BFFF]Purpur[/COLOR][/URL], or Folia for Minecraft 1.20 - 1.21.x.
+[/LIST]
+
+[B][COLOR=#32CD32]🔌 Optional Integrations (Soft Dependencies):[/COLOR][/B]
+[LIST]
+[*][B]Vault (Economy):[/B] [URL='https://www.spigotmc.org/resources/vault.34315/'][COLOR=#00BFFF]SpigotMC Link[/COLOR][/URL]
+Enables purchasing hopper upgrades using in-game economy balance. [I]If Vault is absent, TNHoppers automatically falls back to vanilla player XP levels.[/I]
+[*][B]SuperiorSkyblock2 (Island Protection):[/B] [URL='https://bg-software.com/superiorskyblock/'][COLOR=#00BFFF]Official Website[/COLOR][/URL] | [URL='https://polymart.org/resource/superiorskyblock2.383'][COLOR=#00BFFF]Polymart Link[/COLOR][/URL]
+Enables island boundary checks, BUILD & CHEST permission validation, and anti-theft cross-island protection. [I]If not installed, TNHoppers operates in standalone NoOp mode for Survival/SMP.[/I]
+[/LIST]
+
+[HR][/HR]
+
 [SIZE=5][B][COLOR=#00BFFF]🔨 Quick Installation[/COLOR][/B][/SIZE]
 [LIST=1]
+[*]Ensure your server is running on [B]Java 21[/B] and [B]Paper 1.20 - 1.21.x[/B].
 [*]Download [B]TNHoppers-0.6.2.jar[/B].
 [*]Place the .jar into your server's [B]plugins/[/B] folder.
-[*][I](Recommended)[/I] Install [B]Vault[/B] and [B]SuperiorSkyblock2[/B].
+[*][I](Optional)[/I] Install [B]Vault[/B] and/or [B]SuperiorSkyblock2[/B].
 [*]Restart your server. Everything will generate automatically!
 [/LIST]
 

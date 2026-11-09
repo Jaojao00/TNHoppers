@@ -259,17 +259,31 @@ logging:
 
 ---
 
-## 🔨 VI. HƯỚNG DẪN CÀI ĐẶT (INSTALLATION GUIDE)
+## 📋 VI. YÊU CẦU HỆ THỐNG & PHỤ THUỘC (DEPENDENCIES & REQUIREMENTS)
 
-### Cài đặt trên máy chủ Paper / Purpur
-1. Tải bản phát hành `TNHoppers-0.6.2.jar` chính thức từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.
-2. Thả file `.jar` vào thư mục `plugins/` của máy chủ Paper (hỗ trợ 1.20 trở lên).
-3. (Khuyến nghị) Cài đặt **Vault** (cùng plugin kinh tế như EssentialsX) để sử dụng hệ thống nâng cấp bằng tiền ingame, và **SuperiorSkyblock2** nếu là máy chủ Skyblock.
-4. Khởi động lại máy chủ hoặc gõ `/tnhoppers reload` để plugin khởi tạo cơ sở dữ liệu SQLite và cấu hình `config.yml`.
+### 1. Phụ thuộc bắt buộc (Required):
+- **Java 21+ Runtime:** Tải tại [Eclipse Temurin Java 21 (Adoptium)](https://adoptium.net/temurin/releases/?version=21).  
+  > *Lưu ý cho Minecraft 1.20:* TNHoppers được biên dịch tối ưu trên nền tảng Java 21 LTS (Records, Pattern Matching). Mặc dù vanilla 1.20.0-1.20.4 mặc định dùng Java 17, các nền tảng Paper/Purpur 1.20 đều tương thích và vận hành mượt mà trên môi trường JVM Java 21+. Vui lòng thiết lập cờ khởi chạy máy chủ trỏ tới Java 21+.
+- **Nền tảng máy chủ:** [Paper](https://papermc.io/downloads/paper), [Purpur](https://purpurmc.org/), hoặc Folia (1.20.x – 1.21.x).
+
+### 2. Tích hợp tùy chọn (Soft Dependencies):
+- **[Vault](https://www.spigotmc.org/resources/vault.34315/) (Kinh tế):** Cho phép mua nâng cấp phễu bằng tiền trong server. *Nếu không cài Vault, plugin tự động chuyển sang trừ cấp độ kinh nghiệm (XP Levels) của người chơi.*
+- **[SuperiorSkyblock2](https://bg-software.com/superiorskyblock/) (Bảo vệ đảo Skyblock):** Tích hợp kiểm tra quyền đảo (`BUILD` & `CHEST`), chặn hút/nối xuyên đảo. *Nếu không cài, plugin tự chuyển sang chế độ độc lập (NoOp) dành cho Survival/SMP thông thường.*
 
 ---
 
-## 📜 VII. BẢN QUYỀN & LIÊN HỆ HỖ TRỢ (COPYRIGHT & SUPPORT)
+## 🔨 VII. HƯỚNG DẪN CÀI ĐẶT (INSTALLATION GUIDE)
+
+### Cài đặt trên máy chủ Paper / Purpur
+1. Đảm bảo máy chủ đang chạy trên môi trường **Java 21+** và **Paper 1.20 - 1.21.x**.
+2. Tải bản phát hành `TNHoppers-0.6.2.jar` chính thức từ **[GitHub Releases](https://github.com/Jaojao00/TNHoppers/releases)**.
+3. Thả file `.jar` vào thư mục `plugins/` của máy chủ.
+4. *(Tùy chọn)* Cài đặt **Vault** (cùng plugin kinh tế như EssentialsX) và/hoặc **SuperiorSkyblock2**.
+5. Khởi động lại máy chủ. Cơ sở dữ liệu SQLite WAL và file cấu hình `config.yml` sẽ được khởi tạo hoàn toàn tự động.
+
+---
+
+## 📜 VIII. BẢN QUYỀN & LIÊN HỆ HỖ TRỢ (COPYRIGHT & SUPPORT)
 
 - **Bản quyền tác phẩm:** Toàn bộ sản phẩm và thương hiệu **TNHoppers** thuộc quyền sở hữu của **Tài Nguyễn (TN)**.
 - **Phân phối:** Plugin được phát hành dưới dạng tệp binary đóng gói (`.jar`) tối ưu, không công khai mã nguồn gốc để bảo vệ bản quyền và tính an toàn của dự án.
