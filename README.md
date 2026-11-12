@@ -125,7 +125,22 @@ Khi phễu hút vật phẩm rơi tự do từ sàn farm:
 
 ---
 
-### 8. Bảng điều khiển lệnh `/tnhoppers` (Command Menu)
+### 8. Hỗ trợ toàn diện Bedrock Edition qua GeyserMC & Sửa lỗi Texture Đen-Tím
+- 📱 **Hỗ trợ 100% cảm ứng cho người chơi Bedrock / Geyser:**
+  - **Menu Điều Chỉnh Phạm Vi Hút chuyên dụng (`§8Điều Chỉnh Phạm Vi Hút`):**
+    - Nhấp/chạm vào La bàn (Slot 21) ở Menu chính để mở giao diện điều chỉnh trực quan.
+    - **Nút 1-chạm độc lập:** Bổ sung các phím bấm riêng biệt `[-] Giảm 1b` (Slot 10), `[--] Giảm 5b` (Slot 11), `[++] Tăng 5b` (Slot 15), `[+] Tăng 1b` (Slot 16), `[↺ Đặt về 5b mặc định]` (Slot 20), và `[★ Bán kính tối đa / Toàn Chunk]` (Slot 24).
+    - Người chơi trên điện thoại hay máy tính bảng không cần thao tác chuột phải hay phím Shift.
+  - **Thao tác 1-chạm trong Menu Bộ Lọc Rương (`renderLinkFilter`):**
+    - **Slot 49 (Name Tag):** Chạm 1 lần để nhập tên mới cho rương vào khung chat.
+    - **Slot 52 (TNT):** Chạm 1 lần để gỡ liên kết rương đích (có cơ chế kiểm tra bảo vệ kho ảo an toàn).
+- 🎨 **Miễn nhiễm lỗi Đen-Tím (Missing Texture):**
+  - Sử dụng các vật phẩm 2D phẳng chuẩn mực `Material.CHEST_MINECART` và `Material.HOPPER_MINECART` thay cho khối TileEntity 3D.
+  - Đảm bảo hiển thị hoàn hảo trên mọi client, bao gồm cả các server dùng Custom Resource Pack (như Tu Tiên Skyblock) và Geyser Bedrock.
+
+---
+
+### 9. Bảng điều khiển lệnh `/tnhoppers` (Command Menu)
 Gõ lệnh `/tnhoppers` (hoặc `/tnhoppers menu`) để mở ngay bảng điều khiển tổng quan:
 - 🌪️ **Lấy Phễu Thường (Normal Hopper):** Nhận 1 phễu hút theo bán kính.
 - 🌐 **Lấy Phễu Chunk (Chunk Hopper):** Nhận 1 phễu hút toàn chunk 16x16.

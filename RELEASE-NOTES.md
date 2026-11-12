@@ -2,6 +2,47 @@
   <img src="https://raw.githubusercontent.com/Jaojao00/TNHoppers/main/tnhoperlogo.jpg" alt="TNHoppers Logo" width="200" />
 </p>
 
+# 🚀 Bản Phát Hành TNHoppers v0.6.4 (Sửa Lỗi Đen-Tím GUI & Hỗ Trợ Toàn Diện Bedrock / GeyserMC 1-Chạm)
+
+**Phiên bản:** `v0.6.4`  
+**Ngày phát hành:** 12/11/2026  
+**Tác giả:** Tài Nguyễn (TN)  
+**Tương thích:** Paper / Purpur 1.20 - 1.21.x (Java 21+)  
+**Hỗ trợ nền tảng kép:** Java Edition & Bedrock Edition (GeyserMC / Floodgate)
+
+---
+
+### 🌟 Điểm nổi bật & Khắc phục trong bản phát hành này:
+
+1. **[Sửa lỗi triệt để] 🎨 Khắc phục hoàn toàn lỗi ô Đen-Tím (Missing Texture) trong GUI:**
+   - **Nguyên nhân gốc rễ:** Biểu tượng khối TileEntity `Material.CHEST` (Slot 10) và `Material.HOPPER` (Slot 24) khi hiển thị trong container GUI thường bị lỗi khối lập phương đen-tím thiếu texture khi máy chủ sử dụng Custom Resource Pack (như pack Tu Tiên Skyblock) hoặc khi người chơi Bedrock kết nối qua GeyserMC.
+   - **Giải pháp chuẩn hóa:** Thay thế toàn bộ bằng các item texture 2D phẳng chuẩn mực của Minecraft: `Material.CHEST_MINECART` và `Material.HOPPER_MINECART`.
+   - **Kết quả:** Hiển thị sắc nét, đẹp mắt 100% không bao giờ bị lỗi đen-tím trên cả Java Edition lẫn Bedrock Edition qua Geyser.
+
+2. **[Tính năng mới] 📱 Giao diện Bán Kính Hút Chuyên Dụng cho Bedrock (GeyserMC 1-Chạm):**
+   - **Vấn đề trên Bedrock di động / cảm ứng:** Người chơi trên điện thoại/máy tính bảng kết nối qua Geyser chỉ có thao tác Chạm (Tap - Left Click), không có Chuột Phải hay Shift-Click.
+   - **Menu Điều Chỉnh Phạm Vi Hút chuyên dụng (`§8Điều Chỉnh Phạm Vi Hút`):**
+     - Mở trực tiếp khi nhấp/chạm vào La bàn (Slot 21) ở Menu chính.
+     - **Slot 10 (`Material.RED_WOOL`):** `[-] Giảm 1 block` — 1 chạm để giảm 1 block.
+     - **Slot 11 (`Material.RED_DYE`):** `[--] Giảm 5 block` — 1 chạm để giảm nhanh 5 block.
+     - **Slot 13 (`Material.COMPASS`):** Bảng hiển thị thông số bán kính hiện tại, cấp độ nâng cấp và trạng thái Toàn Chunk / Normal.
+     - **Slot 15 (`Material.LIME_DYE`):** `[++] Tăng 5 block` — 1 chạm để tăng nhanh 5 block.
+     - **Slot 16 (`Material.LIME_WOOL`):** `[+] Tăng 1 block` — 1 chạm để tăng 1 block.
+     - **Slot 20 (`Material.CLOCK`):** `[↺] Đặt về Mặc Định (5 block)` — 1 chạm đưa về 5 block chuẩn (tránh hút nhầm đồ khi người chơi đứng xa).
+     - **Slot 22 (`Material.ARROW`):** `[Quay lại]` — Trở về Menu chính.
+     - **Slot 24 (`Material.NETHER_STAR`):** `[★] Bán Kính Tối Đa` (hoặc `Hút Toàn Chunk (16×16)` cho Chunk Hopper).
+
+3. **[Nâng cấp Bedrock] 👆 Phím bấm 1-Chạm Đổi Tên & Gỡ Liên Kết Rương Đích:**
+   - Trong Menu Bộ Lọc Rương (`renderLinkFilter`):
+     - **Slot 49 (`Material.NAME_TAG`):** `Đổi tên rương này` — Chạm 1 lần để gõ tên mới vào khung chat, không cần nhớ phím Shift.
+     - **Slot 52 (`Material.TNT`):** `[✕] Gỡ liên kết rương này` — Chạm 1 lần để gỡ liên kết (có cơ chế bảo vệ kho ảo), người chơi Bedrock không còn cần chuột phải.
+
+4. **🧪 27/27 Bài Kiểm Thử Độc Lập Đạt 100% (Surefire Unit Tests):**
+   - Hoàn thành toàn bộ **27/27 bài kiểm thử** tự động (`ChunkHopperCacheTest`, `BlockPositionTest`, `LinkDestinationTest`, `HopperUpgradesTest`, `SuctionRadiusTest`, `TransferResultTest`, `VirtualStorageCapacityTest`).
+   - Đóng gói ProGuard Obfuscated Jar `TNHoppers-0.6.2.jar` (14.3 MB) bảo mật mã nguồn độc quyền của **Tài Nguyễn (TN)**.
+
+---
+
 # 🚀 Bản Phát Hành TNHoppers v0.6.3 (Break Protection, Virtual Deep Storage & 24/24 Tests Passed)
 
 **Phiên bản:** `v0.6.3`  
