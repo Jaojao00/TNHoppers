@@ -151,6 +151,17 @@ Gõ lệnh `/tnhoppers` (hoặc `/tnhoppers menu`) để mở ngay bảng điề
 
 ---
 
+### 10. API dành cho Lập Trình Viên (Developer API & Hooks)
+TNHoppers cung cấp bộ API Java đầy đủ và hệ thống Sự Kiện tùy chỉnh (`me.tainguyen.tnhoppers.api.*`) để các plugin khác (như Shop, Crate, Quest, Custom Items...) có thể dễ dàng kết nối:
+- 🔌 **Truy xuất nhanh:** `TNHoppersAPI api = TNHoppersAPI.get();` (hoặc qua Bukkit ServicesManager).
+- 📦 **Tạo phễu custom:** `api.createHopperItem("CHUNK", 5, 5, 5, 5, 4)` để thêm vào phần thưởng nhiệm vụ hoặc cửa hàng.
+- 🔗 **Quản lý liên kết & nâng cấp:** `api.linkContainer()`, `api.unlinkContainer()`, `api.setUpgrades()`.
+- 🛢️ **Tương tác kho ảo (Deep Storage):** Nạp/rút/xả kho ảo trực tiếp bằng code (`api.depositVirtualStorage()`, `api.withdrawVirtualStorage()`).
+- 📡 **Hệ thống Custom Events:** `HopperLinkEvent`, `HopperUnlinkEvent`, `HopperSuctionEvent`, `HopperTransferEvent`, `HopperUpgradeEvent`, `VirtualStorageOverflowEvent`.
+- 📘 **Xem tài liệu chi tiết & Code mẫu đầy đủ tại:** [DEVELOPER_API.md](file:///C:/Users/ASUS/Documents/GitHub/TNHoppers/DEVELOPER_API.md)
+
+---
+
 ## ⚙️ III. CHI TIẾT KỸ THUẬT & KIẾN TRÚC LÕI (TECHNICAL ARCHITECTURE)
 
 ```
