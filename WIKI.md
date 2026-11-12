@@ -61,7 +61,7 @@ Chào mừng bạn đến với **Mục Lục Wiki Chính Thức của TNHoppers
 │   ├── 7.2 Giao dịch hoàn nguyên đối xứng chống dupe (Symmetrical Rollback)
 │   ├── 7.3 Con trỏ ngân sách quét phễu (Round-Robin Budget Cursor - 20 TPS)
 │   ├── 7.4 SQLite WAL Single-Writer & Cơ chế Checkpoint TRUNCATE
-│   └── 7.5 Minh chứng kiểm thử độc lập (24/24 Surefire Unit Tests)
+│   └── 7.5 Minh chứng kiểm thử độc lập (27/27 Surefire Unit Tests)
 │
 ├── ❓ 8. KHẮC PHỤC SỰ CỐ & CÂU HỎI THƯỜNG GẶP (TROUBLESHOOTING & FAQ)
 │   ├── 8.1 Phễu không hút đồ hoặc rương không nhận đồ
@@ -102,9 +102,10 @@ Chào mừng bạn đến với **Mục Lục Wiki Chính Thức của TNHoppers
 
 ## 🌪️ CHƯƠNG 2: PHÂN LOẠI PHỄU & CƠ CHẾ CỐT LÕI
 
-### 2.1 Phân loại phễu
-* 🔸 **Normal Hopper (Phễu Thường):** Hút vật phẩm rơi tự do theo hình cầu (`RADIUS`). Bán kính mặc định từ 3 blocks, nâng cấp tối đa 16 blocks. Phù hợp cho các máy farm nhỏ, xưởng chế tạo, kho cá nhân.
-* 🔹 **Chunk Hopper (Phễu Chunk):** Hút **TOÀN BỘ** vật phẩm rơi tự do trong phạm vi toàn bộ 1 Chunk (`16x16` từ tầng bedrock đến nóc thế giới). Phù hợp cho cụm farm quái lớn, farm đá đỏ, máy thu hoạch tự động quy mô lớn.
+### 2.1 Phân loại phễu & Cơ chế Bán kính
+* 🔸 **Normal Hopper (Phễu Thường):** Hút vật phẩm rơi tự do theo hình cầu (`RADIUS`). Bán kính mặc định là **5 blocks** (tránh hút lan ra ngoài nhà khi đứng xa) và có thể nâng cấp mở rộng lên tới **24 blocks** (Cấp 1: 5b, Cấp 2: 8b, Cấp 3: 12b, Cấp 4: 16b, Cấp 5: 24b). Người chơi có thể dùng nút **La Bàn (Slot 21)** trong menu để tự do tăng/giảm bán kính hút theo ý muốn!
+* 🔹 **Chunk Hopper (Phễu Chunk):** Hút **TOÀN BỘ** vật phẩm rơi tự do trong phạm vi toàn bộ 1 Chunk (`16x16` từ tầng bedrock đến nóc thế giới). Phù hợp cho cụm farm quái lớn, farm đá đỏ, máy thu hoạch quy mô lớn. Cho phép cài đặt giới hạn bán kính trong GUI.
+* 🛡️ **Bảo vệ đồ người chơi tự vứt (Player Drop Protection):** Khi người chơi tự bấm Q vứt đồ, phễu sẽ chờ hết 2 giây trễ nhặt (40 ticks) mới hút. Đồ từ quái chết hoặc nông sản gãy vẫn được hút tức thì không độ trễ.
 
 ### 2.2 Bảo toàn cấp độ & Loại phễu (PDC Preservation)
 * Khi phễu bị đập vỡ bằng cúp hoặc bị nổ bởi TNT/Creeper, phễu rơi ra vật phẩm đặc biệt lưu toàn bộ cấp độ nâng cấp và loại phễu trong `PersistentDataContainer (PDC)`.
@@ -219,7 +220,7 @@ Trong menu **Liên kết (Links)** của phễu:
 * **Live View Registry (`activeHoppersView()`):** Duy trì chỉ mục kép phẳng `ConcurrentHashMap<BlockPosition, HopperData>`. Chi phí cấp phát = 0 allocation, con trỏ ngân sách duyệt an toàn không bị `ConcurrentModificationException`.
 * **Giao dịch Hoàn nguyên Đối xứng (Symmetrical Rollback):** Lưu trữ snapshot kho chứa và trạng thái thực thể ngoài thế giới. Nếu có ngoại lệ, cả kho chứa lẫn thực thể thế giới đều được khôi phục nguyên trạng.
 * **SQLite WAL Single-Writer:** Thực thi trên luồng ghi duy nhất, chế độ WAL với timeout 5000ms. Khi tắt máy chủ, chạy `PRAGMA wal_checkpoint(TRUNCATE)` kèm kiểm tra mã chẩn đoán `busy/log/checkpointed`.
-* **24 Unit Tests Độc Lập:** Bộ kiểm thử tự động xác minh tính bảo toàn khối lượng, cơ chế phát hiện liên kết bảo vệ phá hủy rương, và tính toán 4 mốc sức chứa kho ảo Deep Storage (10k, 50k, 100k, 250k items) đạt tỷ lệ vượt qua 100%.
+* **27 Unit Tests Độc Lập:** Bộ kiểm thử tự động xác minh tính bảo toàn khối lượng, cơ chế bảo vệ phá hủy rương, phân cấp bán kính hút (5, 8, 12, 16, 24 blocks) kèm khả năng tùy chỉnh bán kính, và 4 mốc sức chứa kho ảo Deep Storage (10k, 50k, 100k, 250k items) đạt tỷ lệ vượt qua 100%.
 
 ---
 

@@ -37,7 +37,13 @@
 3. **[Nâng cấp GUI] ⚙️ Nhánh Nâng Cấp Dung Tích Kho Ảo (Slot 13 - Barrel)**:
    - Bảng điều khiển Upgrades GUI bổ sung Slot 13 biểu tượng Thùng Gỗ (Barrel) hiển thị chi tiết cấp độ, sức chứa hiện tại, sức chứa tiếp theo và giá nâng cấp bằng tiền Vault / XP.
 
-4. **🧪 24/24 Bài Kiểm Thử Độc Lập Đạt 100% (Surefire Unit Tests)**:
+4. **[Tính năng mới] 🧲 Tinh Chỉnh Bán Kính Hút & Chống Cướp Đồ Người Chơi (Suction Range & Drop Protection)**:
+   - **Bán kính mặc định 5 block (Cấp 1):** Giới hạn phạm vi hút ban đầu ở mức 5 block quanh phễu, tránh việc người chơi đứng ở xa bị hút mất đồ ngoài ý muốn.
+   - **Phân cấp nâng cấp bán kính mở rộng:** Cấp 1 (5b) ➔ Cấp 2 (8b) ➔ Cấp 3 (12b) ➔ Cấp 4 (16b) ➔ Cấp 5 (24b).
+   - **Nút tùy chỉnh bán kính trong GUI (Slot 21 - Compass):** Người chơi có thể nhấp chuột trái để tăng, chuột phải để giảm bán kính hoạt động xuống phạm vi hẹp mong muốn bất cứ lúc nào.
+   - **Bảo vệ đồ người chơi tự vứt (`protect-player-drops: true`):** Khi người chơi tự bấm Q vứt đồ, phễu sẽ chờ hết 2 giây (40 ticks) mới hút, cho phép trao đổi đồ thoải mái. Nông sản và mob farm vẫn được hút tức thì không độ trễ.
+
+5. **🧪 27/27 Bài Kiểm Thử Độc Lập Đạt 100% (Surefire Unit Tests)**:
    - Bổ sung `VirtualStorageCapacityTest` kiểm thử tính toán sức chứa 4 cấp độ và tính bất biến của dữ liệu.
    - Bổ sung `testDestinationLinkedAndBreakProtection` trong `ChunkHopperCacheTest` kiểm thử cơ chế phát hiện liên kết rương và bảo vệ phá hủy.
    - Toàn bộ **24 bài kiểm thử độc lập** đều vượt qua (**0 failures, 0 errors, 0 skipped**).

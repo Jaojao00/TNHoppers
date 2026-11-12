@@ -34,7 +34,14 @@ suction:
   enabled: true
   # RADIUS: hút theo bán kính quanh phễu; CHUNK: hút toàn bộ chunk 16x16
   mode: "RADIUS"
-  radius: 3.0
+  # Bán kính hút mặc định cấp 1 (5 blocks). Người chơi có thể nâng cấp lên 8, 12, 16, 24 blocks
+  # hoặc dùng nút chỉnh bán kính trong GUI để điều chỉnh phạm vi mong muốn.
+  radius: 5.0
+  # Chống cướp đồ người chơi tự tay vứt (bấm Q hoặc vứt từ túi đồ).
+  # Khi bật true: phễu sẽ chờ hết độ trễ nhặt (2 giây = 40 ticks) của người chơi rồi mới hút,
+  # tránh việc người chơi vừa drop đồ ra hoặc đứng xa vứt cho bạn bè là bị phễu nuốt sạch.
+  # Vật phẩm từ quái chết, máy farm, cây trồng, khối vỡ vẫn được hút tức thì không độ trễ.
+  protect-player-drops: true
   # Quét trực tiếp liên tục (Live Scans: 2 ticks = 0.1s)
   interval-ticks: 2
   # Ngân sách xử lý tối đa mỗi chu kỳ

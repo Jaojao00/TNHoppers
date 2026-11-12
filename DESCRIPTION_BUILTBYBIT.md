@@ -13,8 +13,8 @@ Are traditional vanilla hoppers dragging your server's **TPS** down and inflatin
 ## 🔥 Key Features at a Glance
 
 ### 1. ⚡ 2 Specialized Hopper Types
-* 🔸 **Normal Hopper (Radius Mode):** Collects free-falling ground items within a customizable spherical radius (upgradable from **3 to 16 blocks**). Perfect for compact farms, mob grinders, and private storage rooms.
-* 🔹 **Chunk Hopper (Full-Chunk Vacuum):** Instantly vacuums **EVERY** dropped item across the entire **16×16 chunk** from bedrock to sky limit! Runs with a chunk-wide entity cache that calls `getEntities()` exactly once per tick cycle regardless of how many hoppers reside in that chunk.
+* 🔸 **Normal Hopper (Radius Mode):** Collects free-falling ground items within a customizable spherical radius (upgradable from **5 to 24 blocks**). Features an in-GUI **Radius Selector (Slot 21)** to easily reduce suction range, plus **Player Drop Protection** so dropped player items aren't accidentally swallowed!
+* 🔹 **Chunk Hopper (Full-Chunk Vacuum):** Instantly vacuums **EVERY** dropped item across the entire **16×16 chunk** from bedrock to sky limit! Runs with a chunk-wide entity cache that calls `getEntities()` exactly once per tick cycle regardless of how many hoppers reside in that chunk. Radius can also be custom-capped in GUI.
 
 ### 2. 🪄 Wireless Link Wand & Smart Routing
 * Link hoppers directly to target containers (Chests, Trapped Chests, Barrels, Shulkers) using the **Link Wand** (`/tnhoppers wand`).
@@ -45,7 +45,7 @@ Players can invest in-game economy or XP levels to upgrade 5 core stats:
 1. ⚡ **Speed:** Reduces transfer delay from 20 ticks down to 15, 10, 5, or 2 ticks/transfer.
 2. 📦 **Amount:** Increases items moved per transfer from 1 up to 4, 16, 32, or 64 items.
 3. 🔗 **Max Links:** Expands simultaneous linked chest connections from 1 up to 15 chests.
-4. 📏 **Distance & Radius:** Expands suction radius up to 16 blocks and wireless linking distance up to 250 blocks.
+4. 📏 **Distance & Radius:** Expands suction radius up to 24 blocks (5b default, 8b, 12b, 16b, 24b) and wireless linking distance up to 250 blocks. Includes in-GUI Radius Selector (Slot 21)!
 5. 🌌 **Virtual Deep Storage:** Expands virtual overflow buffer from **10,000** up to **50,000**, **100,000**, and **250,000** items!
 * Fully supports **Vault Economy** with automatic fallback to **XP Levels**.
 
@@ -67,7 +67,7 @@ Players can invest in-game economy or XP levels to upgrade 5 core stats:
 * **Zero-Allocation Live View (`activeHoppersView()`):** Traverses active hoppers with a weakly consistent iterator, eliminating garbage collection spikes.
 * **Symmetrical Transactional Rollback:** Both container slot arrays and world entity item stacks are snapshot-protected against unexpected server lag or event cancellation.
 * **SQLite WAL Single-Writer:** Asynchronous single-writer queue with 5000ms busy timeout and `PRAGMA wal_checkpoint(TRUNCATE)` shutdown verification.
-* **24 Automated Unit Tests:** 100% verified test coverage for mass conservation, virtual deep storage overflow, and cache consistency.
+* **27 Automated Unit Tests:** 100% verified test coverage for mass conservation, virtual deep storage overflow, suction radius selection, and cache consistency.
 
 ---
 

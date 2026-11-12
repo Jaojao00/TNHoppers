@@ -19,7 +19,7 @@ Are traditional vanilla hoppers dragging your server's [B]TPS[/B] down and infla
 [LIST]
 [*][B][COLOR=#FFD700]⚡ 2 Specialized Hopper Types:[/COLOR][/B]
 [LIST]
-[*][B]Normal Hopper (Radius Mode):[/B] Collects free-falling ground items within a customizable spherical radius (upgradable from [B]3 to 16 blocks[/B]). Perfect for compact farms, mob grinders, and private storage rooms.
+[*][B]Normal Hopper (Radius Mode):[/B] Collects free-falling ground items within a customizable spherical radius (upgradable from [B]5 to 24 blocks[/B]). Includes an in-GUI [B]Radius Selector (Slot 21)[/B] to quickly lower the suction range, plus [B]Player Drop Protection[/B] to prevent accidental item snatching!
 [*][B]Chunk Hopper (Full-Chunk Vacuum):[/B] Instantly vacuums [B]EVERY[/B] dropped item across the entire [B]16×16 chunk[/B] from bedrock to sky limit! Runs with a chunk-wide entity cache that calls [I]getEntities()[/I] exactly once per tick cycle regardless of how many hoppers reside in that chunk.
 [/LIST]
 
@@ -70,7 +70,8 @@ Are traditional vanilla hoppers dragging your server's [B]TPS[/B] down and infla
 [*][B]📦 Amount:[/B] Increases items moved per transfer from 1 up to 4, 16, 32, or 64 items.
 [*][B]🛢️ Deep Storage Capacity (Slot 13):[/B] Increases virtual buffer from 10,000 up to 250,000 items/chest!
 [*][B]🔗 Max Links:[/B] Expands simultaneous linked chest connections from 1 up to 15 chests.
-[*][B]📏 Distance & Radius:[/B] Expands suction radius up to 16 blocks and wireless linking distance up to 250 blocks.
+[*][B]📏 Distance & Radius:[/B] Expands suction radius up to 24 blocks (5b default, 8b, 12b, 16b, 24b) and wireless linking distance up to 250 blocks. Includes in-GUI Radius Selector (Slot 21)!
+[*][B]🛢️ Deep Storage Capacity (Slot 13):[/B] Increases virtual buffer from 10,000 up to 250,000 items/chest!
 [*]Fully supports [B]Vault Economy[/B] with automatic fallback to [B]XP Levels[/B].
 [/LIST]
 
@@ -88,7 +89,7 @@ Are traditional vanilla hoppers dragging your server's [B]TPS[/B] down and infla
 [*][B]Zero-Allocation Live View (activeHoppersView()):[/B] Traverses active hoppers with a weakly consistent iterator, eliminating garbage collection spikes.
 [*][B]Symmetrical Transactional Rollback:[/B] Both container slot arrays and world entity item stacks are snapshot-protected against unexpected server lag or event cancellation.
 [*][B]SQLite WAL Single-Writer:[/B] Asynchronous single-writer queue with 5000ms busy timeout and [I]PRAGMA wal_checkpoint(TRUNCATE)[/I] shutdown verification.
-[*][B]19 Automated Unit Tests:[/B] 100% verified test coverage for mass conservation and cache consistency.
+[*][B]27 Automated Unit Tests:[/B] 100% verified test coverage for mass conservation, virtual deep storage overflow, suction radius selection, and cache consistency.
 [/LIST]
 [/LIST]
 

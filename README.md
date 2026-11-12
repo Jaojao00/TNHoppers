@@ -36,8 +36,9 @@ Các plugin phễu cũ thời kỳ Minecraft 1.8–1.13 (như `MFHoppers`) hiệ
 
 ### 1. Phân loại Phễu & Cách nhận
 Hệ thống cung cấp **2 dòng phễu chuyên biệt** tùy theo nhu cầu:
-- 🔸 **Normal Hopper (Phễu thường):** Hút vật phẩm rơi tự do theo bán kính hình cầu (`RADIUS`). Bán kính mặc định từ 3 blocks và có thể nâng cấp mở rộng lên tới 16 blocks. Thích hợp cho các máy farm tự động nhỏ lẻ, xưởng chế tạo, kho phân loại.
-- 🔹 **Chunk Hopper (Phễu Chunk):** Hút **TOÀN BỘ** vật phẩm rơi tự do trong phạm vi toàn bộ một Chunk (`16x16` từ tầng bedrock đến nóc thế giới). Thích hợp cho các cụm farm quái, farm đá đỏ, máy thu hoạch tự động quy mô siêu lớn.
+- 🔸 **Normal Hopper (Phễu thường):** Hút vật phẩm rơi tự do theo bán kính hình cầu (`RADIUS`). Bán kính mặc định là **5 blocks** (tránh hút lan ra ngoài nhà khi đứng xa) và có thể nâng cấp mở rộng lên tới **24 blocks** (Cấp 1: 5b, Cấp 2: 8b, Cấp 3: 12b, Cấp 4: 16b, Cấp 5: 24b). Đặc biệt, người chơi có thể bấm nút **La Bàn (Slot 21)** trong menu để tự do tăng/giảm bán kính hút theo ý muốn!
+- 🔹 **Chunk Hopper (Phễu Chunk):** Hút **TOÀN BỘ** vật phẩm rơi tự do trong phạm vi toàn bộ một Chunk (`16x16` từ tầng bedrock đến nóc thế giới). Thích hợp cho các cụm farm quái, farm đá đỏ, máy thu hoạch tự động quy mô siêu lớn. Người chơi cũng có thể đặt bán kính giới hạn trong GUI nếu không muốn hút toàn bộ chunk.
+- 🛡️ **Chống "cướp" đồ người chơi tự vứt (Player Drop Protection):** Khi người chơi tự bấm Q vứt đồ hoặc trao đổi với bạn bè, phễu sẽ chờ hết 2 giây trễ nhặt (40 ticks) mới hút. Đồ từ quái chết hoặc nông sản gãy vẫn được hút tức thì không độ trễ.
 
 **Cách nhận và tương tác:**
 - **Lệnh nhận:** Gõ `/tnhoppers get <normal|chunk>` hoặc mở bảng điều khiển `/tnhoppers` để bấm nhận trực tiếp.
